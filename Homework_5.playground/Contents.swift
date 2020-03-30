@@ -380,3 +380,146 @@ cadillacEscalade.configuration(luxury)
 //v4.a()
 //
 //Ответ: А
+
+
+
+// Пример композиции
+
+//class Salary {
+//    var monthSalary: Int
+//    var bonus: Int
+//
+//    init() {
+//        monthSalary = 0
+//        bonus = 0
+//    }
+//
+//    var annualSalary: Int {
+//        return monthSalary * 12 + bonus
+//    }
+//}
+//
+//class Employee {
+//    let name: String
+//    let age: Int
+//    let salary = Salary()
+//
+//    init(name: String, age: Int, monthSalary: Int, bonus: Int) {
+//        self.name = name
+//        self.age = age
+//        salary.monthSalary = monthSalary
+//        salary.bonus = bonus
+//    }
+//
+//    var totalSalary: Int {
+//        return salary.annualSalary
+//    }
+//}
+//
+//let employee = Employee(name: "John", age: 35, monthSalary: 50000, bonus: 30000)
+//print(employee.totalSalary)
+
+
+//class Limbs {
+//    var number: Int
+//
+//    init(_ num: Int) {
+//        self.number = num
+//    }
+//}
+//
+//class Mammal {
+//    let limbs = Limbs(4)
+//}
+//
+//let cow = Mammal()
+//print(cow.limbs.number)
+
+
+//class TV {
+//    var isOn: Bool
+//
+//    init() {
+//        isOn = false
+//    }
+//
+//    func powerOn() {
+//        isOn = true
+//    }
+//
+//    func powerOff() {
+//        isOn = false
+//    }
+//}
+//
+//class Remote {
+//    let tv = TV()
+//
+//
+//    func turnOn() {
+//        tv.powerOn()
+//    }
+//
+//    func switchOff() {
+//        tv.powerOff()
+//    }
+//}
+
+
+// Пример агрегации
+
+//class Salary {
+//    let monthSalary: Int
+//    let bonus: Int
+//
+//    init(monthSalary: Int, bonus: Int) {
+//        self.monthSalary = monthSalary
+//        self.bonus = bonus
+//    }
+//
+//    var annualSalary: Int {
+//        return monthSalary * 12 + bonus
+//    }
+//}
+//
+//class Employee {
+//    let name: String
+//    let age: Int
+//    let salary: Salary
+//
+//    init(name: String, age: Int, salary: Salary) {
+//        self.name = name
+//        self.age = age
+//        self.salary = salary
+//    }
+//
+//    var totalSalary: Int {
+//        return salary.annualSalary
+//    }
+//}
+//
+//let engineerSalary = Salary(monthSalary: 50000, bonus: 30000)
+//let engineer = Employee(name: "John", age: 35, salary: engineerSalary )
+//print(engineer.totalSalary)
+
+
+//class Limbs {
+//    let number: Int
+//
+//    init(_ number: Int) {
+//        self.number = number
+//    }
+//}
+//
+//class Mammal {
+//    let limbs: Limbs
+//
+//    init(limbs: Limbs) {
+//        self.limbs = limbs
+//    }
+//}
+//
+//let mammalLimbsNumber = Limbs(4)
+//let cow = Mammal(limbs: mammalLimbsNumber)
+
+
