@@ -10,7 +10,7 @@
         <!--Item2-->
         <scene sceneID="I0u-5G-DMt">
             <objects>
-                <viewController id="H5m-Xc-Dmq" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Item2Controller" id="H5m-Xc-Dmq" customClass="Item2ViewController" customModule="StudyProject7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hGZ-8h-dSv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Изменить"/>
                                 <connections>
-                                    <segue destination="tVm-nZ-Kx5" kind="show" id="CQi-MD-RdY"/>
+                                    <segue destination="tVm-nZ-Kx5" kind="presentation" identifier="ChangeColor" id="tsu-Em-D0M"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выбран зеленый" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPU-Ch-53t">
@@ -37,6 +37,10 @@
                         <viewLayoutGuide key="safeArea" id="vCH-Jr-1qL"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item2" image="star" catalog="system" id="1im-q9-RmX"/>
+                    <navigationItem key="navigationItem" id="cTf-fj-qdM"/>
+                    <connections>
+                        <outlet property="actualColorLabel" destination="QPU-Ch-53t" id="8cr-wr-x15"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YFl-sV-68O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,25 +55,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1a-jR-xWU">
-                                <rect key="frame" x="20" y="173" width="157" height="35"/>
+                                <rect key="frame" x="32" y="173" width="157" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Выбрать зеленый"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="tVm-nZ-Kx5" eventType="touchUpInside" id="wNF-Nm-L8Y"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNy-zZ-2Fn">
-                                <rect key="frame" x="20" y="216" width="136" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wmg-ma-f0L">
+                                <rect key="frame" x="32" y="216" width="136" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Выбрать синий"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="tVm-nZ-Kx5" eventType="touchUpInside" id="y2F-H5-6vB"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ey-W4-tKJ">
-                                <rect key="frame" x="20" y="259" width="158" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CJE-7B-a7s">
+                                <rect key="frame" x="32" y="259" width="158" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Выбрать красный"/>
+                                <connections>
+                                    <action selector="changeColor:" destination="tVm-nZ-Kx5" eventType="touchUpInside" id="34X-Cg-0kL"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выбран зеленый" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-7e-FH2">
-                                <rect key="frame" x="20" y="138" width="167" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-7e-FH2">
+                                <rect key="frame" x="32" y="138" width="194" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
@@ -80,15 +93,18 @@
                         <viewLayoutGuide key="safeArea" id="kfw-nl-NLa"/>
                     </view>
                     <navigationItem key="navigationItem" id="7JQ-NK-CBV"/>
+                    <connections>
+                        <outlet property="colorLabel" destination="Apb-7e-FH2" id="3D4-hn-2fR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6m4-gm-o3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6376811594205" y="55.580357142857139"/>
+            <point key="canvasLocation" x="1834.7826086956522" y="55.580357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Item1 View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StudyProject7" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="Item1ViewController" customModule="StudyProject7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +126,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Синий"/>
                                 <connections>
-                                    <segue destination="79D-1z-yv5" kind="show" id="lik-AQ-8gj"/>
+                                    <action selector="showBlue" destination="BYZ-38-t0r" eventType="touchUpInside" id="zya-eU-lkg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1mK-Ow-mCr">
@@ -121,7 +137,7 @@
                                     <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5Mb-BU-Tiz" kind="show" id="s42-Ad-dEu"/>
+                                    <action selector="showRed" destination="BYZ-38-t0r" eventType="touchUpInside" id="n4E-ON-Rhr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,10 +145,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="LAB-OV-fOT"/>
+                    <connections>
+                        <segue destination="79D-1z-yv5" kind="show" identifier="ShowBlue" id="1xS-sy-oXQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1925" y="-609"/>
+            <point key="canvasLocation" x="1835" y="-609"/>
         </scene>
         <!--Зеленый-->
         <scene sceneID="qqc-4J-fYw">
@@ -169,7 +188,7 @@
         <!--Красный-->
         <scene sceneID="Sn4-dW-VgH">
             <objects>
-                <viewController id="5Mb-BU-Tiz" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RedController" id="5Mb-BU-Tiz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3aY-Zn-mox">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,10 +204,52 @@
         <!--Item3-->
         <scene sceneID="qb6-88-pZ9">
             <objects>
-                <viewController id="otJ-uQ-Ldf" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Parent" id="otJ-uQ-Ldf" customClass="ParentViewController" customModule="StudyProject7" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ZW-7g-ZeL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KgT-yc-UUX">
+                                <rect key="frame" x="20" y="451" width="374" height="362"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="EAz-aE-Zya" kind="embed" identifier="EmbededSegue" id="t0h-IC-kQP"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-dL-YBc">
+                                <rect key="frame" x="172" y="144" width="75" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Желтый">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="otJ-uQ-Ldf" eventType="touchUpInside" id="nAf-So-Pma"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Um8-i1-pOX">
+                                <rect key="frame" x="157" y="188" width="105" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Пурпурный">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="otJ-uQ-Ldf" eventType="touchUpInside" id="ctY-Kp-e0c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCe-hq-54T">
+                                <rect key="frame" x="168" y="100" width="80" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Зеленый">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="otJ-uQ-Ldf" eventType="touchUpInside" id="gXB-Wm-27b"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="kHM-AN-10A"/>
                     </view>
@@ -196,7 +257,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SQ-Ua-jZN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="712"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="723.88392857142856"/>
+        </scene>
+        <!--Child View Controller-->
+        <scene sceneID="kuI-L6-31L">
+            <objects>
+                <viewController storyboardIdentifier="Child" id="EAz-aE-Zya" customClass="ChildViewController" customModule="StudyProject7" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rbf-JE-8HM">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="362"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WPn-bi-vfn">
+                                <rect key="frame" x="149" y="43" width="80" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Зеленый">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="EAz-aE-Zya" eventType="touchUpInside" id="mh1-YO-ec8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgv-SX-yOt">
+                                <rect key="frame" x="152" y="87" width="75" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Желтый">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="EAz-aE-Zya" eventType="touchUpInside" id="QiD-vc-6IF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuE-IO-JwW">
+                                <rect key="frame" x="137" y="131" width="105" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Пурпурный">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changeColor:" destination="EAz-aE-Zya" eventType="touchUpInside" id="rej-kO-xrO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Fnl-mc-8r6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCi-rf-Mpw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1835" y="724"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rpJ-S5-Cym">

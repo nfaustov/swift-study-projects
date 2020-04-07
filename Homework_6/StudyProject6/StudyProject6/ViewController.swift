@@ -14,10 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var enterTextField: UITextField!
     
     @IBAction func addText() {
-        for text in [enterTextField.text] {
-            if let label = textLabel.text {
-                textLabel.text = (text ?? "") + " " + label
-            }
+        if let label = textLabel.text, let text = enterTextField.text {
+            textLabel.text = text + " " + label
         }
     }
 }

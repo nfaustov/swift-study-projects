@@ -8,12 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ViewControllerDelegate {
+    func setColor(_ color: String)
+}
 
+class ViewController: UIViewController {
+    var colorText = ""
+    
+    var delegate: ViewControllerDelegate?
+    
+    @IBOutlet weak var colorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        colorLabel.text = colorText
     }
-
+    
+    @IBAction func changeColor(_ sender: UIButton) {
+        switch sender.titleLabel?.text {
+        case "Выбрать зеленый": colorText = "Выбран зеленый"
+        case "Выбрать синий": colorText = "Выбран синий"
+        default: colorText = "Выбран красный"
+        }
+        dismiss(animated: true, completion: nil)
+        delegate?.setColor(colorText)
+    }
 }
 
