@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     
     @IBAction func exponentiation() {
         if let num = Int(numberTextField.text ?? "1") {
-            textLabel.text = String(Int(pow(2, Double(num))))
+            textLabel.text = String(pow(2, Double(num)))
         }
         else {
             textLabel.text = "Введите целое число в строку"

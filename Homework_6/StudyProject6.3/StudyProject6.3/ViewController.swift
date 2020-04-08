@@ -28,17 +28,15 @@ class ViewController: UIViewController {
         case max = "max"
         
         func apply(_ num1: Double, _ num2: Double) -> Double {
-            var result: Double
             switch self {
-                case .addition: result = num1 + num2
-                case .subtraction: result = num1 - num2
-                case .multiplication: result = num1 * num2
-                case .quotient: result = num1 / num2
-                case .power: result = pow(num1, num2)
-                case .min: result = num1 > num2 ? num2 : num1
-                case .max: result = num2 > num1 ? num1 : num2
+                case .addition: return num1 + num2
+                case .subtraction: return num1 - num2
+                case .multiplication: return num1 * num2
+                case .quotient: return num1 / num2
+                case .power: return pow(num1, num2)
+                case .min: return num1 > num2 ? num2 : num1
+                case .max: return num2 > num1 ? num1 : num2
                 }
-            return result
         }
     }
     
