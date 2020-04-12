@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol ViewControllerDelegate {
+protocol ViewControllerDelegate: AnyObject {
     func setColor(_ color: String)
 }
 
 class ViewController: UIViewController {
     var colorText = ""
     
-    var delegate: ViewControllerDelegate?
+    weak var delegate: ViewControllerDelegate?
     
     @IBOutlet weak var colorLabel: UILabel!
     

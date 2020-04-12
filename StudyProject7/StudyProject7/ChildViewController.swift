@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ParentViewControllerDelegate {
+protocol ParentViewControllerDelegate: AnyObject {
     func setColor(_ color: UIColor)
 }
 
@@ -17,7 +17,7 @@ class ChildViewController: UIViewController {
         didSet {view.backgroundColor = backgroundColor}
     }
     
-    var delegate: ParentViewControllerDelegate?
+    weak var delegate: ParentViewControllerDelegate?
     
     @IBAction func changeColor(_ sender: UIButton) {
         switch sender.titleLabel?.text {
