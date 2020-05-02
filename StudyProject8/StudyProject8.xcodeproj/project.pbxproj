@@ -15,6 +15,7 @@
 		8B667C2F244DAFFE00FE588C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B667C2D244DAFFE00FE588C /* Main.storyboard */; };
 		8B667C31244DAFFF00FE588C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B667C30244DAFFF00FE588C /* Assets.xcassets */; };
 		8B667C34244DAFFF00FE588C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B667C32244DAFFF00FE588C /* LaunchScreen.storyboard */; };
+		8B81704B245C18E500C045C6 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B81704A245C18E500C045C6 /* DateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8B667C30244DAFFF00FE588C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B667C33244DAFFF00FE588C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B667C35244DAFFF00FE588C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B81704A245C18E500C045C6 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				8B667C2B244DAFFE00FE588C /* GalleryViewController.swift */,
 				8B470AD22450DF5B00E3DB84 /* ImagesViewController.swift */,
 				8B470AD42450F19A00E3DB84 /* SegmentedViewController.swift */,
+				8B81704A245C18E500C045C6 /* DateViewController.swift */,
 				8B667C2D244DAFFE00FE588C /* Main.storyboard */,
 				8B667C30244DAFFF00FE588C /* Assets.xcassets */,
 				8B667C32244DAFFF00FE588C /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 				8B667C28244DAFFE00FE588C /* AppDelegate.swift in Sources */,
 				8B470AD52450F19A00E3DB84 /* SegmentedViewController.swift in Sources */,
 				8B470AD32450DF5B00E3DB84 /* ImagesViewController.swift in Sources */,
+				8B81704B245C18E500C045C6 /* DateViewController.swift in Sources */,
 				8B667C2A244DAFFE00FE588C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

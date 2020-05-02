@@ -10,15 +10,25 @@ import UIKit
 
 class SegmentedViewController: UIViewController {
     
-    let segmentedControl = UISegmentedControl(items: ["1", "2", "3"]) 
+    let segmentedControl = UISegmentedControl(items: ["1", "2", "3"])
+    
+    let greenView = UIView()
+    let blueView = UIView()
+    let purpleView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureSegmentedControl()
+        configureFirstView()
+        configureSecondView()
+        configureThirdView()
+        
+        updateView()
     }
     
     func configureSegmentedControl() {
+        
         segmentedControl.frame = CGRect(x: 20, y: 70, width: 374, height: 40)
         segmentedControl.backgroundColor = UIColor.darkGray.withAlphaComponent(0.3)
         segmentedControl.selectedSegmentTintColor = UIColor.red.withAlphaComponent(0.7)
@@ -27,17 +37,37 @@ class SegmentedViewController: UIViewController {
     }
  
     @objc func segmentedControlSwitch(segment: UISegmentedControl) {
+        // сделал два варианта решения, если раскоментировать другой вариант,
+        // то метод updateView() и другой switch можно убрать
+        
+//        switch segment.selectedSegmentIndex {
+//        case 0:
+//            greenView.isHidden = false
+//            blueView.isHidden = true
+//            purpleView.isHidden = true
+//        case 1:
+//            greenView.isHidden = true
+//            blueView.isHidden = false
+//            purpleView.isHidden = true
+//        case 2:
+//            greenView.isHidden = true
+//            blueView.isHidden = true
+//            purpleView.isHidden = false
+//        default: ()
+//        }
+        
         updateView()
         
         switch segment.selectedSegmentIndex {
-        case 0: configureFirstView()
-        case 1: configureSecondView()
-        case 2: configureThirdView()
+        case 0: greenView.isHidden = false
+        case 1: blueView.isHidden = false
+        case 2: purpleView.isHidden = false
         default: ()
         }
     }
     
     func configureFirstView() {
+        
         let textField1 = UITextField()
         textField1.backgroundColor = .white
         textField1.frame = CGRect(x: 10, y: 10, width: 200, height: 40)
@@ -50,16 +80,17 @@ class SegmentedViewController: UIViewController {
         textField2.placeholder = "TextField"
         textField2.layer.cornerRadius = 6
         
-        let greenView = UIView()
         greenView.backgroundColor = .systemGreen
         greenView.frame = CGRect(x: 20, y: 150, width: 374, height: 110)
         greenView.layer.cornerRadius = 6
         view.addSubview(greenView)
         greenView.addSubview(textField1)
         greenView.addSubview(textField2)
+//        greenView.isHidden = true
     }
     
     func configureSecondView() {
+        
         let button1 = UIButton(type: .system)
         button1.setTitle("button1", for: .normal)
         button1.setTitleColor(.black, for: .normal)
@@ -74,16 +105,17 @@ class SegmentedViewController: UIViewController {
         button2.frame = CGRect(x: 10, y: 60, width: 140, height: 40)
         button2.layer.cornerRadius = 6
         
-        let blueView = UIView()
         blueView.backgroundColor = .systemBlue
         blueView.frame = CGRect(x: 20, y: 150, width: 374, height: 110)
         blueView.layer.cornerRadius = 6
         view.addSubview(blueView)
         blueView.addSubview(button1)
         blueView.addSubview(button2)
+//        blueView.isHidden = true
     }
     
     func configureThirdView() {
+        
         let images: [UIImage?] = [UIImage(named: "5"), UIImage(named: "6")]
         
         let imageView1 = UIImageView()
@@ -94,19 +126,20 @@ class SegmentedViewController: UIViewController {
         imageView2.image = images[1]
         imageView2.frame = CGRect(x: 12, y: 230, width: 350, height: 210)
         
-        let purpleView = UIView()
         purpleView.backgroundColor = .purple
         purpleView.frame = CGRect(x: 20, y: 150, width: 374, height: 450)
         purpleView.layer.cornerRadius = 6
         view.addSubview(purpleView)
         purpleView.addSubview(imageView1)
         purpleView.addSubview(imageView2)
+//        purpleView.isHidden = true
     }
     
     func updateView() {
+        
         for subview in view.subviews {
-            if subview != segmentedControl {
-            subview.removeFromSuperview()
+            if subview != segmentedControl{
+                subview.isHidden = true
             }
         }
     }
