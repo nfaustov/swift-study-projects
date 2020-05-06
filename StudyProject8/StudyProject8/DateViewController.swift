@@ -27,7 +27,7 @@ class DateViewController: UIViewController {
     }
     
     @objc func changeDate() {
-        
+
         let formatter = DateFormatter()
         formatter.dateFormat = "dd MMMM EEEE H:mm"
         currentTimeLabel.text = formatter.string(from: datePicker.date)
@@ -36,11 +36,12 @@ class DateViewController: UIViewController {
     @objc func changeTimeZone() {
 
         let calendar = Calendar.current
+        let date = Date()
 
         guard let timeZone = Int(timeZoneTextField.text ?? "") else { return }
-        guard let newDate = calendar.date(byAdding: .hour, value: timeZone - 3, to: datePicker.date) else { return }
-        // (timeZone - 3) потому что текущее +3
+        guard let newDate = calendar.date(byAdding: .hour, value: timeZone - 3, to: date) else { return }
         datePicker.setDate(newDate, animated: true)
+        
         changeDate()
     }
 }

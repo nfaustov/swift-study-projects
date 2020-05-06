@@ -25,29 +25,32 @@ class GalleryViewController: UIViewController {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let images: [UIImage?] = [
+    let images: [UIImage] = [
         UIImage(named: "1"), UIImage(named: "2"),
         UIImage(named: "3"), UIImage(named: "4"),
         UIImage(named: "5"), UIImage(named: "6"),
         UIImage(named: "7"), UIImage(named: "8"),
         UIImage(named: "9"), UIImage(named: "10")
-        ]
+        ].compactMap { $0 }
 
-    lazy var animationImages: [UIImage] = images.compactMap { $0 }
+    lazy var animationImages: [UIImage] = images
     
     var timer: Timer?
     
-    var count = 0 {
-       didSet { stepper.value = Double(count) }
-        // отслеживаем count, чтобы stepper пееключал с той картинки, на которой остановилась анимация
+    var count: Double = 0 {
+        
+       didSet { stepper.value = count }
     }
     
     var currentProgress: Float = 0
     
+    var displayLink: CADisplayLink?
+    var startTime: CFTimeInterval?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageContainer.image = images[0]
+        imageContainer.image = images.first
         
         stepper.minimumValue = 0
         stepper.maximumValue = Double(images.count - 1)
@@ -78,11 +81,8 @@ class GalleryViewController: UIViewController {
     @IBAction func stepped() {
         
         imageContainer.image = animationImages[Int(stepper.value)]
-        count = Int(stepper.value)
-        // это нужно, чтобы newImages() изменил массив картинок и запустил анимацию с того места, где остановился stepper
-        // count также выступает в роли индекса в цикле в updateProgress()
+        count = stepper.value
         updateProgress()
-        // используя stepper также меняем состояние progressView
     }
     
     @IBAction func slide() {
@@ -91,6 +91,7 @@ class GalleryViewController: UIViewController {
     }
     
     @objc func switchRemote() {
+        
         if alphaSwitch.isOn {
             imageContainer.alpha = 0.3
             activityIndicator.startAnimating()
@@ -105,46 +106,46 @@ class GalleryViewController: UIViewController {
         
         if count != 0 {
             newImages(&animationImages)
-            // меняем последовательность картинок в анимации, чтобы начать ее с той картинки, которая показывается в текущий момент
-            // если count не менялся до этого, т.е. 0, то используем стартовую последовательность
-            // возможно эта проверка лишняя, если count равен 0, то последовательность все равно не изменится, просто лишний раз выполнится цикл
             count = 0
         }
         
         imageContainer.animationImages = animationImages
         imageContainer.animationDuration = 6.0
         imageContainer.startAnimating()
-        
-        let timeInterval = imageContainer.animationDuration / Double(images.count)
-        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(nextImage), userInfo: nil, repeats: true)
-        // берем интервал смены картинки в анимации и в nextImage() устанавливаем счетчик (count) и изменение progressView
-        timer?.tolerance = 0.1 * timeInterval
-        // возможно это тоже лишнее в текущей задаче, но такие рекомендации по допуску дает apple
+
+        startTime = CACurrentMediaTime()
+        displayLink = CADisplayLink(target: self, selector: #selector(nextImage))
+        displayLink?.add(to: .main, forMode: .default)
     }
     
     @IBAction func stopButton() {
         
-        timer?.invalidate()
+        displayLink?.isPaused = true
+        displayLink?.invalidate()
         
         imageContainer.stopAnimating()
-        imageContainer.image = animationImages[count]
+        imageContainer.image = animationImages[Int(count)]
     }
     
     @objc func nextImage() {
         
-        count += 1
-        if count == animationImages.count {
+        let now = CACurrentMediaTime()
+        guard let startTime = startTime else {return}
+        let timeInterval = imageContainer.animationDuration / Double(animationImages.count)
+        count = (now - startTime) / timeInterval
+        
+        if count >= Double(animationImages.count) {
             count = 0
         }
-        
+
         updateProgress()
     }
     
     func newImages(_ oldImages: inout [UIImage]) {
-        // перемещаем все картинки c индекса count в начало массива сохраняя их последовательность
-        for index in count..<oldImages.count {
+        
+        for index in Int(count)..<oldImages.count {
             let image = oldImages.remove(at: index)
-            oldImages.insert(image, at: index - count)
+            oldImages.insert(image, at: index - Int(count))
         }
     }
     
@@ -152,12 +153,10 @@ class GalleryViewController: UIViewController {
         
         let progressStepValue = 1 / Float(animationImages.count - 1)
         for image in images {
-            if animationImages[count] == image {
+            if animationImages[Int(count)] == image {
                 if let value = images.firstIndex(of: image) {
                     currentProgress = progressStepValue * Float(value)
-                    }
-                // поскольку count обнуляется при каждом запуске анимации и массив изменяется,
-                // то для корректного отображения progressView находим индекс текущей картинки в первоначальном массиве
+                }
             }
         }
         
