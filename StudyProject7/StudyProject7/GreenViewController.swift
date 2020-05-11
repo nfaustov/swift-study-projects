@@ -9,8 +9,6 @@
 import UIKit
 
 class GreenViewController: UIViewController {
-
-    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

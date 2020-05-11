@@ -1,26 +1,27 @@
 //
-//  YellowViewController.swift
+//  PlaceholderViewController.swift
 //  StudyProject7
 //
-//  Created by Nikolai Faustov on 15.04.2020.
+//  Created by Nikolai Faustov on 10.05.2020.
 //  Copyright © 2020 Nikolai Faustov. All rights reserved.
 //
 
 import UIKit
 
-class YellowViewController: UIViewController {
-    
+class PlaceholderViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
     
     @IBAction func button(_ sender: UIButton) {
-        if sender.titleLabel?.textColor == UIColor.darkText {
+        if sender.titleLabel?.textColor == UIColor.label {
             sender.setTitleColor(.lightGray, for: .normal)
         }
         else {
-            sender.setTitleColor(.darkText, for: .normal)
+            sender.setTitleColor(.label, for: .normal)
         }
     }
+
 }
