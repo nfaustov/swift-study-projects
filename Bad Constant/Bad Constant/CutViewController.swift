@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CutViewController: UIViewController {
     var totalPrice = 0
     var cutPrice = 10
     var capsulationPrice = 15
