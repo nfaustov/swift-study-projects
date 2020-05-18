@@ -14,12 +14,10 @@ protocol ComplexViewControllerDelegate: AnyObject {
 }
 
 class CutViewController: UIViewController {
-    var totalPrice = 0
-    var cutPrice = 10
-    var capsulationPrice = 15
-    var extensionPrice = 25
+    let cutProperties = CutPropeties()
     
-    var totalCutMoney = 0.0
+    var totalPrice = 0
+    var totalCutPayment = 0.0
     
     @IBOutlet weak var cutLabel: UILabel!
     @IBOutlet weak var capsulationLabel: UILabel!
@@ -45,21 +43,21 @@ class CutViewController: UIViewController {
         view.endEditing(true)
         
         if let cut = Int(сutTextfield.text!) {
-            cutLabel.text = "\(cut * cutPrice)"
+            cutLabel.text = "\(cut * cutProperties.cutPrice)"
         }
         else {
             cutLabel.text = "0"
         }
 
         if let capsulation = Int(capsulationTextfield.text!) {
-            capsulationLabel.text = "\(capsulation * capsulationPrice)"
+            capsulationLabel.text = "\(capsulation * cutProperties.capsulationPrice)"
         }
         else {
             capsulationLabel.text = "0"
         }
 
         if let extensionNum = Int(extensionTextfield.text!) {
-            extensionLabel.text = "\(extensionNum * extensionPrice)"
+            extensionLabel.text = "\(extensionNum * cutProperties.extensionPrice)"
         }
         else {
             extensionLabel.text = "0"
@@ -67,12 +65,15 @@ class CutViewController: UIViewController {
 
         if let cutTotalPrice = Int(cutLabel.text ?? ""), let capsulationTotalPrice = Int(capsulationLabel.text ?? ""), let extensionTotalPrice = Int(extensionLabel.text ?? "") {
             totalPrice = cutTotalPrice + capsulationTotalPrice + extensionTotalPrice
-            totalCutMoney = Double(cutTotalPrice) / 2 + Double(capsulationTotalPrice) * 4 / 10 + Double(extensionTotalPrice) / 2
+            totalCutPayment = Double(cutTotalPrice) * cutProperties.cutPaymentProportion +
+                Double(capsulationTotalPrice) * cutProperties.capsulationPaymentProportion +
+                Double(extensionTotalPrice) * cutProperties.extensionPaymentProportion
+            
             totalLabel.animate(newText: "\(totalPrice) ₽", characterDelay: 0.1)
         }
-        
+
         delegate?.setCutPrice(totalPrice)
-        delegate?.setCutPayment(Double(totalCutMoney))
+        delegate?.setCutPayment(totalCutPayment)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

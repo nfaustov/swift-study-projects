@@ -30,12 +30,9 @@ class ComplexViewController: UIViewController {
     var myExtMoney = 0.0
     var myCutMoney = 0.0
     
-    var totalPrice: Int {
-        get {
-            return extensionPrice + cutPrice
-        }
-        set {
-            totalLabel.text = "\(totalPrice) ₽"
+    var totalPrice = 0 {
+        didSet {
+            totalLabel.text = "\(extensionPrice + cutPrice) ₽"
         }
     }
     

@@ -14,7 +14,8 @@ protocol ComplexViewControllerDelegate1: AnyObject {
 }
 
 class ExtViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    var extensionPayment = 12.5
+    let extProperties = ExtProperties()
+    let cutProperties = CutPropeties()
     
     @IBOutlet weak var pickerView: UIPickerView!
     
@@ -109,10 +110,10 @@ class ExtViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         delegate?.setExtPrice(priceList(colors[pickerView.selectedRow(inComponent: 0)], length[pickerView.selectedRow(inComponent: 1)]))
         
         if let extensionNum = Int(extensionTextfield.text ?? "") {
-            supposedPriceLabel.text = "Предварительная стоимость коррекции: \(extensionNum * 50) ₽"
+            supposedPriceLabel.text = "Предварительная стоимость коррекции: \(extensionNum * cutProperties.summaryCutPrice) ₽"
             supposedPriceLabel.fadeTransition(0.9)
             
-            delegate?.setExtPayment(Double(extensionNum) * extensionPayment)
+            delegate?.setExtPayment(Double(extensionNum) * extProperties.extensionPayment)
         }
         
         extensionTextfield.resignFirstResponder()

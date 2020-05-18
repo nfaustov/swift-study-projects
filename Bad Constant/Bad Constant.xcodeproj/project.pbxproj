@@ -19,6 +19,7 @@
 		8B470AD1245010C100E3DB84 /* ComplexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B470AD0245010C100E3DB84 /* ComplexViewController.swift */; };
 		8B5C1327243887AF00503DBF /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5C1326243887AF00503DBF /* ExtViewController.swift */; };
 		8B83885D24531FF400A1E43E /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B83885C24531FF400A1E43E /* CommonExtensions.swift */; };
+		8BE884222471F86600C26FD2 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE884212471F86600C26FD2 /* Properties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		8B470AD0245010C100E3DB84 /* ComplexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexViewController.swift; sourceTree = "<group>"; };
 		8B5C1326243887AF00503DBF /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		8B83885C24531FF400A1E43E /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		8BE884212471F86600C26FD2 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				8B112ACC2430EE84000E0DAD /* AppDelegate.swift */,
 				8B112ACE2430EE84000E0DAD /* SceneDelegate.swift */,
 				8B83885C24531FF400A1E43E /* CommonExtensions.swift */,
+				8BE884212471F86600C26FD2 /* Properties.swift */,
 				8B112AD02430EE84000E0DAD /* CutViewController.swift */,
 				8B5C1326243887AF00503DBF /* ExtViewController.swift */,
 				8B130183243DD42900E3A233 /* FoxViewController.swift */,
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE884222471F86600C26FD2 /* Properties.swift in Sources */,
 				8B5C1327243887AF00503DBF /* ExtViewController.swift in Sources */,
 				8B112AD12430EE84000E0DAD /* CutViewController.swift in Sources */,
 				8B112ACD2430EE84000E0DAD /* AppDelegate.swift in Sources */,

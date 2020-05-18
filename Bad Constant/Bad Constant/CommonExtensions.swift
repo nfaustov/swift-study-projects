@@ -6,7 +6,6 @@
 //  Copyright © 2020 Nikolai Faustov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {
