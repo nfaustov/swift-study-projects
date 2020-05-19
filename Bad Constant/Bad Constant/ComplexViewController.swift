@@ -13,17 +13,25 @@ class ComplexViewController: UIViewController {
     var extensionViewController: UIViewController!
     var cutViewController: UIViewController!
     
-    @IBOutlet weak var extButton: UIButton!
-    @IBOutlet weak var cutButton: UIButton!
+    @IBOutlet weak var extButton: UIButton! {
+        didSet { extButton.layer.cornerRadius = 6 }
+    }
+    @IBOutlet weak var cutButton: UIButton! {
+        didSet { cutButton.layer.cornerRadius = 6 }
+    }
     
     @IBOutlet weak var buttonsView: UIView!
-    @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var bottomContainerView: UIView!
+    @IBOutlet weak var containerView: UIView! {
+        didSet { containerView.clipsToBounds = true}
+    }
+    @IBOutlet weak var bottomContainerView: UIView! {
+        didSet { bottomContainerView.layer.cornerRadius = 12 }
+    }
     
     @IBOutlet weak var totalLabel: UILabel!
     
-    var active1: Bool = true
-    var active2: Bool = true
+    var extButtonActivate: Bool = true
+    var cutButtonActivate: Bool = true
     
     var extensionPrice = 0
     var cutPrice = 0
@@ -32,66 +40,47 @@ class ComplexViewController: UIViewController {
     
     var totalPrice = 0 {
         didSet {
-            totalLabel.text = "\(extensionPrice + cutPrice) ₽"
+            totalLabel.text = "\(totalPrice) ₽"
+            totalLabel.fadeTransition(0.9)
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupButtons()
-        
-        containerView.clipsToBounds = true
-        
-        bottomContainerView.layer.cornerRadius = 12
-        bottomContainerView.clipsToBounds = true
-    }
-    
-    func setupButtons() {
-        extButton.layer.cornerRadius = 6
-        extButton.clipsToBounds = true
-        cutButton.layer.cornerRadius = 6
-        cutButton.clipsToBounds = true
-    }
-    
     @IBAction func extButton(_ sender: UIButton) {
-        if active1 {
+        if extButtonActivate {
             UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = UIColor.systemGray6
             }
             configureExtViewController()
-            showExtViewController(active1)
+            showExtViewController(extButtonActivate)
         }
         else {
             UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = UIColor.systemGray4
             }
-            showExtViewController(active1)
-//            extensionViewController.remove()
+            showExtViewController(extButtonActivate)
             extensionPrice = 0
             myExtMoney = 0.0
         }
-        active1 = !active1
+        extButtonActivate = !extButtonActivate
     }
     
     @IBAction func cutButton(_ sender: UIButton) {
-        if active2 {
+        if cutButtonActivate {
             UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = UIColor.systemGray6
             }
             configureCutViewController()
-            showCutViewController(active2)
+            showCutViewController(cutButtonActivate)
         }
         else {
             UIView.animate(withDuration: 0.3) {
                 sender.backgroundColor = UIColor.systemGray4
             }
-            showCutViewController(active2)
-//            cutViewController.remove()
+            showCutViewController(cutButtonActivate)
             cutPrice = 0
             myCutMoney = 0.0
         }
-        active2 = !active2
+        cutButtonActivate = !cutButtonActivate
     }
 
     func configureExtViewController() {
@@ -109,7 +98,7 @@ class ComplexViewController: UIViewController {
         cutViewController = vc
         addChild(cutViewController)
         containerView.addSubview(cutViewController.view)
-        cutViewController.view.frame = CGRect(x: 0, y: 560, width: view.frame.width, height: 290)
+        cutViewController.view.frame = CGRect(x: 0, y: 620, width: view.frame.width, height: 290)
         cutViewController.didMove(toParent: self)
         vc.delegate = self
     }
@@ -123,7 +112,7 @@ class ComplexViewController: UIViewController {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.extensionViewController.view.frame.origin.y = self.extensionViewController.view.frame.origin.y + 320
+                            self.extensionViewController.view.frame.origin.y = self.extensionViewController.view.frame.origin.y + 340
             }) { (finished) in
             }
         }
@@ -135,8 +124,9 @@ class ComplexViewController: UIViewController {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.extensionViewController.view.frame.origin.y = self.extensionViewController.view.frame.origin.y - 320
+                            self.extensionViewController.view.frame.origin.y = self.extensionViewController.view.frame.origin.y - 340
             }) { (finished) in
+                self.extensionViewController.remove()
             }
         }
     }
@@ -150,7 +140,7 @@ class ComplexViewController: UIViewController {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.cutViewController.view.frame.origin.y = self.cutViewController.view.frame.origin.y - 300
+                            self.cutViewController.view.frame.origin.y = self.cutViewController.view.frame.origin.y - 350
             }) { (finished) in
             }
         }
@@ -162,8 +152,9 @@ class ComplexViewController: UIViewController {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.cutViewController.view.frame.origin.y = self.cutViewController.view.frame.origin.y + 300
+                            self.cutViewController.view.frame.origin.y = self.cutViewController.view.frame.origin.y + 350
             }) { (finished) in
+                self.cutViewController.remove()
             }
         }
     }
