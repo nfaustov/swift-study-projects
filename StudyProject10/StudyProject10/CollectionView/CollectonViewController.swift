@@ -10,6 +10,8 @@ import UIKit
 
 class CollectonViewController: UIViewController {
 
+    @IBOutlet weak var productsCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,20 +25,20 @@ class CollectonViewController: UIViewController {
     }
 
     private var cells: [ProductModel] = [
-        ProductModel(imageName: "1", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
-        ProductModel(imageName: "2", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
-        ProductModel(imageName: "3", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
-        ProductModel(imageName: "4", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
-        ProductModel(imageName: "5", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
-        ProductModel(imageName: "6", productName: "Поездка в это прекрасное место", price: 25000, oldPrice: 40000),
+        ProductModel(imageName: "1", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
+        ProductModel(imageName: "2", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
+        ProductModel(imageName: "3", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
+        ProductModel(imageName: "4", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
+        ProductModel(imageName: "5", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
+        ProductModel(imageName: "6", productName: "Поездка в это прекрасное место", oldPrice: 40000, discount: 40),
     ]
 }
 
 extension CollectonViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (UIScreen.main.bounds.size.height - 60) / 3
-        let width = (UIScreen.main.bounds.size.width - 60) / 2
+        let height = (productsCollectionView.bounds.size.height - 60) / 3
+        let width = (productsCollectionView.bounds.size.width - 60) / 2
         return CGSize(width: width, height: height)
     }
     

@@ -10,10 +10,19 @@ import Foundation
 import UIKit
 
 struct Cell {
-    var color: UIColor
-    var imageName: String
-    var name: String
-    var textStatus: String? = nil
-    var imageStatusName: String? = nil
-    var switchOption = false
+    let color: UIColor
+    let imageName: String
+    let name: String
+    let textStatus: String?
+    let imageStatusName: String?
+    let switchOption: Bool
+    
+    init(color: UIColor, imageName: String, name: String, textStatus: String? = nil, imageStatusName: String? = nil, switchOption: Bool = false) {
+        self.color = color
+        self.imageName = imageName
+        self.name = name
+        self.textStatus = textStatus
+        self.imageStatusName = imageStatusName
+        self.switchOption = switchOption
+    }
 }

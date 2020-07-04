@@ -9,11 +9,17 @@
 import Foundation
 
 struct ProductModel {
-    var imageName: String
-    var productName: String
-    var price: Int
-    var oldPrice: Int
-    var discount: Int {
-        return Int(Double(oldPrice - price) / Double(oldPrice) * 100)
+    let imageName: String
+    let productName: String
+    let oldPrice: Int
+    let discount: Int
+    let price: Double
+    
+    init(imageName: String, productName: String, oldPrice: Int, discount: Int) {
+        self.imageName = imageName
+        self.productName = productName
+        self.oldPrice = oldPrice
+        self.discount = discount
+        self.price = Double(oldPrice) * Double(100 - discount) / Double(100)
     }
 }
