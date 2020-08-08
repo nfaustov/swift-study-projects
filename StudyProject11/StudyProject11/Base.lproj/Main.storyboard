@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,7 +16,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE6-aq-KJs" customClass="CustomButtonView" customModule="StudyProject11" customModuleProvider="target">
-                                <rect key="frame" x="107" y="661.5" width="200" height="100.5"/>
+                                <rect key="frame" x="107" y="683.33333333333337" width="200" height="98.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="PxC-eL-PsX"/>
+                                </constraints>
                                 <state key="normal" title="Show current time">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -31,36 +34,103 @@
                                         <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PxC-eL-PsX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PxC-eL-PsX"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <action selector="currentTimeButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="zUs-jJ-noQ"/>
+                                    <action selector="currentTimeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAf-NK-E2G"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-6X-MuF" customClass="ClockView" customModule="StudyProject11" customModuleProvider="target">
-                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <rect key="frame" x="57" y="303" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="HaK-RQ-hiP"/>
-                                    <constraint firstAttribute="width" constant="300" id="Jc5-Zn-f3V"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Wnj-pn-zDV"/>
+                                    <constraint firstAttribute="width" constant="300" id="iXh-ne-XTJ"/>
+                                    <constraint firstAttribute="width" secondItem="ih9-6X-MuF" secondAttribute="height" multiplier="1:1" id="lnA-SK-8gQ"/>
+                                    <constraint firstAttribute="width" secondItem="ih9-6X-MuF" secondAttribute="height" multiplier="1:1" id="p2o-sH-rbh"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Wnj-pn-zDV"/>
+                                        <exclude reference="iXh-ne-XTJ"/>
+                                        <exclude reference="lnA-SK-8gQ"/>
+                                        <exclude reference="p2o-sH-rbh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Wnj-pn-zDV"/>
+                                        <include reference="p2o-sH-rbh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="iXh-ne-XTJ"/>
+                                        <include reference="lnA-SK-8gQ"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1BZ-T1-N9S"/>
-                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Dna-qD-gKK"/>
-                            <constraint firstItem="aE6-aq-KJs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LUj-dS-XtP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="100" id="Re5-r7-aac"/>
-                            <constraint firstItem="aE6-aq-KJs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.112" id="fC2-il-f7D"/>
-                            <constraint firstItem="aE6-aq-KJs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.483" id="uu1-wu-AwH"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fa5-YP-4pg"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="GA7-RT-km9"/>
+                            <constraint firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="80" id="JYJ-XY-OUe"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.483" id="L2a-MP-ydw"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="leading" secondItem="ih9-6X-MuF" secondAttribute="trailing" constant="100" id="QVq-gq-Hoc"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QZy-sN-zZG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="80" id="XgH-aT-psS"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-36" id="bq5-TG-LMB"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.11" id="j8T-5t-77h"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vw9-Ou-wBG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XgH-aT-psS"/>
+                                <exclude reference="Fa5-YP-4pg"/>
+                                <exclude reference="GA7-RT-km9"/>
+                                <exclude reference="JYJ-XY-OUe"/>
+                                <exclude reference="L2a-MP-ydw"/>
+                                <exclude reference="QVq-gq-Hoc"/>
+                                <exclude reference="QZy-sN-zZG"/>
+                                <exclude reference="bq5-TG-LMB"/>
+                                <exclude reference="j8T-5t-77h"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="GA7-RT-km9"/>
+                                <include reference="JYJ-XY-OUe"/>
+                                <include reference="QVq-gq-Hoc"/>
+                                <include reference="bq5-TG-LMB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="XgH-aT-psS"/>
+                                <include reference="Fa5-YP-4pg"/>
+                                <include reference="L2a-MP-ydw"/>
+                                <include reference="QZy-sN-zZG"/>
+                                <include reference="j8T-5t-77h"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="clockView" destination="ih9-6X-MuF" id="OvZ-CS-Xaj"/>
+                        <outlet property="timeButton" destination="aE6-aq-KJs" id="G7c-Hi-tNj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="246" y="123"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class ClockView: UIView {
+    
     private var hourPoints = 12 { didSet { setNeedsLayout() } }
     
     var classicView = true {
@@ -17,6 +18,7 @@ class ClockView: UIView {
     }
     
     private let calendar = Calendar.current
+    
     private var date = Date() {
         didSet {
             currentSecond = CGFloat(calendar.component(.second, from: date))
@@ -24,26 +26,56 @@ class ClockView: UIView {
             currentHour = CGFloat(calendar.component(.hour, from: date)) + currentMinute / 60
         }
     }
+    
+    private var displayLink: CADisplayLink?
 
     private var currentSecond: CGFloat = 0
     private var currentMinute: CGFloat = 0
     private var currentHour: CGFloat = 0
     
-    @IBInspectable private var hourClockHandLength: CGFloat = 80 { didSet { setNeedsLayout() } }
-    @IBInspectable private var hourClockHandWidth: CGFloat = 4 { didSet { setNeedsLayout() } }
-    @IBInspectable private var hourClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
+    @IBInspectable var hourClockHandLength: CGFloat = 80 { didSet { setNeedsLayout() } }
+    @IBInspectable var hourClockHandWidth: CGFloat = 4 { didSet { setNeedsLayout() } }
+    @IBInspectable var hourClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
     
-    @IBInspectable private var minuteClockHandLength: CGFloat = 110 { didSet { setNeedsLayout() } }
-    @IBInspectable private var minuteClockHandWidth: CGFloat = 2 { didSet { setNeedsLayout() } }
-    @IBInspectable private var minuteClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
+    @IBInspectable var minuteClockHandLength: CGFloat = 110 { didSet { setNeedsLayout() } }
+    @IBInspectable var minuteClockHandWidth: CGFloat = 2 { didSet { setNeedsLayout() } }
+    @IBInspectable var minuteClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
     
-    @IBInspectable private var secondClockHandLength: CGFloat = 140 { didSet { setNeedsLayout() } }
-    @IBInspectable private var secondClockHandWidth: CGFloat = 1 { didSet { setNeedsLayout() } }
-    @IBInspectable private var secondClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
+    @IBInspectable var secondClockHandLength: CGFloat = 140 { didSet { setNeedsLayout() } }
+    @IBInspectable var secondClockHandWidth: CGFloat = 1 { didSet { setNeedsLayout() } }
+    @IBInspectable var secondClockHandColor: UIColor = .black { didSet { setNeedsLayout() } }
     
     private var angle = CGFloat(3 * CGFloat.pi / 2)
     
-    enum TimeValue {
+    private var clockHands = [UIView]()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let clockCenter = CGPoint(x: bounds.origin.x + bounds.width / 2, y: bounds.origin.y + bounds.height / 2)
+        
+        addHourPoints(center: clockCenter)
+        addMinutePoints(center: clockCenter)
+        
+        createClockHand(at: clockCenter, for: .hour)
+        createClockHand(at: clockCenter, for: .minute)
+        createClockHand(at: clockCenter, for: .second)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        let clockCenter = CGPoint(x: bounds.origin.x + bounds.width / 2, y: bounds.origin.y + bounds.height / 2)
+        
+        addHourPoints(center: clockCenter)
+        addMinutePoints(center: clockCenter)
+        
+        createClockHand(at: clockCenter, for: .hour)
+        createClockHand(at: clockCenter, for: .minute)
+        createClockHand(at: clockCenter, for: .second)
+    }
+    
+    enum TimeValue: String {
         case hour, minute, second
     }
     
@@ -60,6 +92,10 @@ class ClockView: UIView {
         layer.cornerRadius = frame.size.width / 2
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray.cgColor
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         
         let clockCenter = CGPoint(x: bounds.origin.x + bounds.width / 2, y: bounds.origin.y + bounds.height / 2)
         
@@ -71,11 +107,55 @@ class ClockView: UIView {
         createClockHand(at: clockCenter, for: .second)
     }
     
+    func activate(state: Bool) {
+        if state {
+            displayLink = CADisplayLink(target: self, selector: #selector(currentTime))
+            displayLink?.add(to: .current, forMode: .default)
+        } else {
+            displayLink?.invalidate()
+        }
+    }
+    
     @objc func currentTime() {
         date = Date()
+
+        for clockHand in clockHands {
+            let timeValue = TimeValue(rawValue: clockHand.restorationIdentifier ?? "")
+            clockHand.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+            switch timeValue {
+            case .hour:
+                let rotationAngle = angle + angleIncrement(by: .hour) * currentHour
+                UIView.animate(withDuration: 0.1) {
+                    clockHand.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                }
+            case .minute:
+                let rotationAngle = angle + angleIncrement(by: .minute) * currentMinute
+                UIView.animate(withDuration: 0.1) {
+                    clockHand.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                }
+            default:
+                let rotationAngle = angle + angleIncrement(by: .second) * currentSecond
+                UIView.animate(withDuration: 0.1) {
+                    clockHand.transform = CGAffineTransform(rotationAngle: rotationAngle)
+                }
+            }
+        }
+    }
+    
+    func redraw() {
         for subview in subviews {
             subview.removeFromSuperview()
         }
+        
+        let clockCenter = CGPoint(x: bounds.origin.x + bounds.width / 2, y: bounds.origin.y + bounds.height / 2)
+        
+        addHourPoints(center: clockCenter)
+        addMinutePoints(center: clockCenter)
+        
+        createClockHand(at: clockCenter, for: .hour)
+        createClockHand(at: clockCenter, for: .minute)
+        createClockHand(at: clockCenter, for: .second)
+        
     }
     
     private func addHourPoints(center: CGPoint) {
@@ -83,7 +163,7 @@ class ClockView: UIView {
         
         for hourPoint in 1...hourPoints {
             angle += angleIncrement(by: .hour)
-            let point = hourPointFrom(angle: angle, radius: radius, offset: center)
+            let point = clockPointFrom(angle: angle, radius: radius, offset: center)
             if hourPoint % 3 != 0 {
                 createHourView(at: point, rotationAngle: angle)
             } else {
@@ -98,10 +178,10 @@ class ClockView: UIView {
         for minutePoint in 1...60 {
             angle += angleIncrement(by: .minute)
             if minutePoint % 5 == 0, !classicView {
-                let point = hourPointFrom(angle: angle, radius: radius, offset: center)
+                let point = clockPointFrom(angle: angle, radius: radius, offset: center)
                 createMinuteLabel(at: point, text: "\(minutePoint)")
             } else if minutePoint % 5 != 0, classicView {
-                let point = hourPointFrom(angle: angle, radius: radius + 25, offset: center)
+                let point = clockPointFrom(angle: angle, radius: radius + 25, offset: center)
                 createMinuteView(at: point, rotationAngle: angle)
             }
         }
@@ -132,7 +212,9 @@ class ClockView: UIView {
         clockHandView.transform = CGAffineTransform(rotationAngle: rotationAngle)
         clockHandView.backgroundColor = clockHandColor
         clockHandView.layer.cornerRadius = 6
+        clockHandView.restorationIdentifier = value.rawValue
         addSubview(clockHandView)
+        clockHands.append(clockHandView)
     }
     
     private func createHourView(at point: CGPoint, rotationAngle: CGFloat) {
@@ -172,7 +254,7 @@ class ClockView: UIView {
         addSubview(label)
     }
     
-    private func hourPointFrom(angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
+    private func clockPointFrom(angle: CGFloat, radius: CGFloat, offset: CGPoint) -> CGPoint {
         let x = radius * cos(angle) + offset.x
         let y = radius * sin(angle) + offset.y
         

@@ -12,34 +12,72 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var clockView: ClockView!
     
-    var displayLink: CADisplayLink?
+    @IBOutlet weak var timeButton: CustomButtonView!
+    
+    var active = false {
+        didSet {
+            buttonLabel = active ? "Stop clock" : "Show current time"
+        }
+    }
+    
+    var buttonLabel = ""
+    
+    let segmentedControl = CustomSegmentedControl.loadFromNIB()
+    
+    var landscape: [NSLayoutConstraint]?
+    var portrait: [NSLayoutConstraint]?
+    
+    var isPortrait = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let segmentedControl = CustomSegmentedControl.loadFromNIB()
-        segmentedControl.frame = CGRect(x: 20, y: 100, width: view.bounds.width - 40, height: 50)
         view.addSubview(segmentedControl)
+        
+        portrait = [
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 50)
+        ]
+        
+        landscape = [
+            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            segmentedControl.centerXAnchor.constraint(equalTo: timeButton.centerXAnchor),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 50)
+        ]
+        
         segmentedControl.delegate = self
     }
     
-    @IBAction func currentTimeButton() {
-        displayLink = CADisplayLink(target: clockView as ClockView, selector: #selector(clockView.currentTime))
-        displayLink?.add(to: .current, forMode: .default)
+    @IBAction func currentTimeButton(_ sender: UIButton) {
+        active.toggle()
+        clockView.activate(state: active)
+        sender.setTitle(buttonLabel, for: .normal)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        isPortrait = UIDevice.current.orientation.isPortrait
+        if isPortrait {
+            NSLayoutConstraint.deactivate(landscape!)
+            NSLayoutConstraint.activate(portrait!)
+        } else {
+            NSLayoutConstraint.deactivate(portrait!)
+            NSLayoutConstraint.activate(landscape!)
+        }
     }
 }
 
 extension ViewController: CustomSegmentedControlDelegate {
-    func changeHourView(classic: Bool) {
-        if clockView.classicView != classic {
+    func didSelectSegment(index: Int) {
+        if clockView.classicView != (index % 2 == 0) {
             UIView.transition(with: clockView,
                               duration: 0.5,
                               options: clockView.classicView ? [.transitionFlipFromLeft] : [.transitionFlipFromRight],
-                              animations: {self.clockView.classicView = classic}
+                              animations: {self.clockView.classicView = (index % 2 == 0)}
             )
-            for subview in clockView.subviews {
-                subview.removeFromSuperview()
-            }
+            clockView.redraw()
         }
     }
 }

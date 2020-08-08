@@ -9,73 +9,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomSegmentedControl" customModule="StudyProject11" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWq-aH-OfQ">
-                    <rect key="frame" x="1" y="1" width="206" height="73"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kuX-HC-1MA">
-                    <rect key="frame" x="0.0" y="0.0" width="207" height="75"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="segmentPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="U2s-uM-Sz8"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDr-WA-bEu">
-                    <rect key="frame" x="207" y="0.0" width="207" height="75"/>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="segmentPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="66o-Uu-Wje"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="DWq-aH-OfQ" secondAttribute="trailing" priority="750" constant="1" id="235-Vc-dY4"/>
-                <constraint firstAttribute="trailing" secondItem="bDr-WA-bEu" secondAttribute="trailing" id="7Dw-Tx-beJ"/>
-                <constraint firstItem="bDr-WA-bEu" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="FNS-mh-gZW"/>
-                <constraint firstItem="DWq-aH-OfQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="centerX" priority="900" id="FXe-UL-ezQ"/>
-                <constraint firstAttribute="bottom" secondItem="kuX-HC-1MA" secondAttribute="bottom" id="NWN-HK-D03"/>
-                <constraint firstAttribute="bottom" secondItem="DWq-aH-OfQ" secondAttribute="bottom" constant="1" id="Ue8-2c-NnM"/>
-                <constraint firstItem="kuX-HC-1MA" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="XOT-V5-nTu"/>
-                <constraint firstItem="bDr-WA-bEu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kEe-3d-aKp"/>
-                <constraint firstItem="kuX-HC-1MA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="knc-xB-2gH"/>
-                <constraint firstAttribute="centerX" secondItem="DWq-aH-OfQ" secondAttribute="trailing" priority="900" id="lKL-qH-RNh"/>
-                <constraint firstItem="kuX-HC-1MA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="r5q-D6-sRR"/>
-                <constraint firstItem="DWq-aH-OfQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="sPX-HU-q8d"/>
-                <constraint firstItem="DWq-aH-OfQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="950" constant="1" id="zd0-XP-J11"/>
-                <constraint firstAttribute="bottom" secondItem="bDr-WA-bEu" secondAttribute="bottom" id="zdl-Eg-RuE"/>
-            </constraints>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="CustomSegmentedControl" customModule="StudyProject11" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <viewLayoutGuide key="safeArea" id="i4I-Pb-zKU"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="leftSegmentName" value="12h"/>
-                <userDefinedRuntimeAttribute type="color" keyPath="segmentColor">
-                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="color" keyPath="backColor">
-                    <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="string" keyPath="rightSegmentName" value="24h"/>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                    <real key="value" value="5"/>
-                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="string" keyPath="firstSegmentName" value="12h"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="secondSegmentName" value="24h"/>
             </userDefinedRuntimeAttributes>
-            <connections>
-                <outlet property="leftSegment" destination="kuX-HC-1MA" id="26Z-Qb-16F"/>
-                <outlet property="leftSideSegment" destination="zd0-XP-J11" id="bne-Sx-Az4"/>
-                <outlet property="rightSegment" destination="bDr-WA-bEu" id="Xqy-Ka-qjT"/>
-                <outlet property="rightSideSegment" destination="235-Vc-dY4" id="7WO-n8-SCa"/>
-                <outlet property="segmentView" destination="DWq-aH-OfQ" id="Hk7-kt-GaW"/>
-            </connections>
-            <point key="canvasLocation" x="118.84057971014494" y="-115.17857142857142"/>
+            <point key="canvasLocation" x="347.82608695652175" y="-919.41964285714278"/>
         </view>
     </objects>
 </document>
