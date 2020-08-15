@@ -24,79 +24,111 @@ class CustomSegmentedControl: UIView {
     @IBInspectable var fifthSegmentName: String = "Fifth" { didSet { layoutIfNeeded() } }
     
     @IBInspectable var activeSegmentColor: UIColor = .white { didSet { layoutIfNeeded() } }
-    @IBInspectable var backColor: UIColor = .systemGray3 { didSet { layoutIfNeeded() } }
-
-    private let activeView = UIView()
+    @IBInspectable var backColor: UIColor = .systemGray4 { didSet { layoutIfNeeded() } }
     
-    private lazy var leadingSpace = activeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: bounds.width / CGFloat(segments) * CGFloat(activeIndex))
-
-    private var segmentsViews = [UIView]()
-    private var segmentsLabels = [UILabel]()
-    
-    var segments = 2 {
+    @IBInspectable var segments: Int = 2 {
         didSet {
+            layoutIfNeeded()
             assert(segments <= 5, "Maximum 5 segments available")
             assert(segments > 1, "You must provide at least 2 segments ")
         }
     }
     
-    var activeIndex = 0 {
+    @IBInspectable var activeIndex: Int = 1 {
         didSet {
             assert(activeIndex < segments && activeIndex >= 0, "activeIndex is out of range")
         }
     }
     
+    private let activeView = UIView()
+    private let stackView = UIStackView()
+    
+    private var leadingSpace: NSLayoutConstraint?
+    private lazy var leadingOffset = activeView.leadingAnchor.constraint(equalTo: leadingAnchor)
+    
     private func configure() {
+        layer.cornerRadius = cornerRadius
+        backgroundColor = backColor
+        layer.borderColor = backColor.cgColor
+        layer.borderWidth = 1
+        clipsToBounds = true
+
+        activeView.backgroundColor = activeSegmentColor
+        activeView.layer.cornerRadius = cornerRadius
+        activeView.layer.shadowOpacity = 0.8
+        activeView.layer.shadowColor = UIColor.systemGray.cgColor
+        activeView.layer.shadowRadius = 15
         addSubview(activeView)
         
-        activeView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        addSubview(stackView)
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+
+        let segmentsNames = [firstSegmentName, secondSegmentName, thirdSegmentName, fourthSegmentName, fifthSegmentName]
         
-        for _ in 0..<segments {
+        for index in 0..<segments {
             let segmentView = UIView()
             segmentView.backgroundColor = .clear
-            addSubview(segmentView)
-            segmentsViews.append(segmentView)
+            stackView.addArrangedSubview(segmentView)
 
-            segmentView.translatesAutoresizingMaskIntoConstraints = false
-            
             let segmentLabel = UILabel()
+            segmentLabel.text = segmentsNames[index]
             segmentView.addSubview(segmentLabel)
-            addSubview(segmentLabel)
-            segmentsLabels.append(segmentLabel)
-            
+
             segmentLabel.translatesAutoresizingMaskIntoConstraints = false
+
+            segmentLabel.centerXAnchor.constraint(equalTo: segmentView.centerXAnchor).isActive = true
+            segmentLabel.centerYAnchor.constraint(equalTo: segmentView.centerYAnchor).isActive = true
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(recognizer:)))
+            segmentView.addGestureRecognizer(tap)
         }
+        
+        leadingSpace = activeView.leadingAnchor.constraint(equalTo: stackView.arrangedSubviews[activeIndex].leadingAnchor)
+
+        activeView.translatesAutoresizingMaskIntoConstraints = false
+        leadingSpace?.isActive = true
+        activeView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+        activeView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        activeView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0 / CGFloat(segments), constant: 0).isActive = true
     }
     
     weak var delegate: CustomSegmentedControlDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        translatesAutoresizingMaskIntoConstraints = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
 
         configure()
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(recognizer:)))
-        addGestureRecognizer(tap)
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        translatesAutoresizingMaskIntoConstraints = false
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         
         configure()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(recognizer:)))
-        addGestureRecognizer(tap)
+        layoutIfNeeded()
+        leadingOffset.constant = stackView.arrangedSubviews[activeIndex].frame.origin.x
     }
     
     @objc func didTap(recognizer: UITapGestureRecognizer) {
-        let location = recognizer.location(in: self)
-        for (index, segment) in segmentsViews.enumerated() {
-            if segment.frame.contains(location) {
-                leadingSpace.constant = segment.frame.origin.x
+        for (index, segment) in stackView.arrangedSubviews.enumerated() {
+            if segment == recognizer.view {
+                leadingSpace?.isActive = false
+                leadingOffset.isActive = true
+                leadingOffset.constant = segment.frame.origin.x
+                activeIndex = index
                 delegate?.didSelectSegment(index: index)
             }
         }
@@ -105,41 +137,6 @@ class CustomSegmentedControl: UIView {
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        layer.cornerRadius = cornerRadius
-        backgroundColor = backColor
-        layer.borderColor = UIColor.systemGray3.cgColor
-        layer.borderWidth = 1
-
-        activeView.backgroundColor = activeSegmentColor
-        activeView.layer.cornerRadius = cornerRadius
-
-        leadingSpace.isActive = true
-        activeView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        activeView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        activeView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / CGFloat(segments)).isActive = true
-
-        let segmentsNames = [firstSegmentName, secondSegmentName, thirdSegmentName, fourthSegmentName, fifthSegmentName]
-        
-        segmentsLabels.enumerated().forEach { index, label in
-            label.text = segmentsNames[index]
-        }
-
-        for (index, segment) in segmentsViews.enumerated() {
-            segment.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width / CGFloat(segments) * CGFloat(index)).isActive = true
-            segment.topAnchor.constraint(equalTo: topAnchor).isActive = true
-            segment.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-            segment.widthAnchor.constraint(equalTo: activeView.widthAnchor).isActive = true
-
-            segmentsLabels[index].centerXAnchor.constraint(equalTo: segment.centerXAnchor).isActive = true
-            segmentsLabels[index].centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
-            segmentsLabels[index].text = segmentsNames[index]
-        }
-    }
-
     static func loadFromNIB() -> CustomSegmentedControl {
         let nib = UINib(nibName: "CustomSegmentedControl", bundle: nil)
         return nib.instantiate(withOwner: self, options: nil).first as! CustomSegmentedControl

@@ -15,8 +15,16 @@ class CustomButtonView: UIButton {
     @IBInspectable private var borderWidth: CGFloat = 2
     @IBInspectable private var borderColor: UIColor = .black
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        layer.cornerRadius = cornerRadius
+        layer.borderWidth = borderWidth
+        layer.borderColor = borderColor.cgColor
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWidth

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var clockView: ClockView!
     
-    @IBOutlet weak var timeButton: CustomButtonView!
+    @IBOutlet weak var showTimeButton: CustomButtonView!
     
     var active = false {
         didSet {
@@ -22,31 +22,35 @@ class ViewController: UIViewController {
     
     var buttonLabel = ""
     
-    let segmentedControl = CustomSegmentedControl.loadFromNIB()
-    
-    var landscape: [NSLayoutConstraint]?
     var portrait: [NSLayoutConstraint]?
+    var landscape: [NSLayoutConstraint]?
     
-    var isPortrait = true
+    var isPortrait: Bool {
+        return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isPortrait ?? false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let segmentedControl = CustomSegmentedControl.loadFromNIB()
         view.addSubview(segmentedControl)
         
         portrait = [
-            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 50)
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+            segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 100)
         ]
         
         landscape = [
             segmentedControl.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
-            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            segmentedControl.centerXAnchor.constraint(equalTo: timeButton.centerXAnchor),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 50)
+            segmentedControl.centerXAnchor.constraint(equalTo: showTimeButton.centerXAnchor),
+            segmentedControl.widthAnchor.constraint(equalTo: showTimeButton.widthAnchor)
         ]
+        
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        NSLayoutConstraint.activate(isPortrait ? portrait! : landscape!)
         
         segmentedControl.delegate = self
     }
@@ -57,8 +61,9 @@ class ViewController: UIViewController {
         sender.setTitle(buttonLabel, for: .normal)
     }
     
-    override func viewDidLayoutSubviews() {
-        isPortrait = UIDevice.current.orientation.isPortrait
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
         if isPortrait {
             NSLayoutConstraint.deactivate(landscape!)
             NSLayoutConstraint.activate(portrait!)
@@ -77,7 +82,10 @@ extension ViewController: CustomSegmentedControlDelegate {
                               options: clockView.classicView ? [.transitionFlipFromLeft] : [.transitionFlipFromRight],
                               animations: {self.clockView.classicView = (index % 2 == 0)}
             )
-            clockView.redraw()
+            for subview in clockView.subviews {
+                subview.removeFromSuperview()
+            }
+            clockView.initialize()
         }
     }
 }

@@ -10,15 +10,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="CustomSegmentedControl" customModule="StudyProject11" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+            <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="i4I-Pb-zKU"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="string" keyPath="firstSegmentName" value="12h"/>
                 <userDefinedRuntimeAttribute type="string" keyPath="secondSegmentName" value="24h"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="segments">
+                    <integer key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="347.82608695652175" y="-919.41964285714278"/>
+            <point key="canvasLocation" x="276.81159420289856" y="-949.55357142857133"/>
         </view>
     </objects>
 </document>

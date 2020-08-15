@@ -81,7 +81,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ih9-6X-MuF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fa5-YP-4pg"/>
-                            <constraint firstItem="ih9-6X-MuF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="GA7-RT-km9"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="GA7-RT-km9"/>
                             <constraint firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="80" id="JYJ-XY-OUe"/>
                             <constraint firstItem="aE6-aq-KJs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.483" id="L2a-MP-ydw"/>
                             <constraint firstItem="aE6-aq-KJs" firstAttribute="leading" secondItem="ih9-6X-MuF" secondAttribute="trailing" constant="100" id="QVq-gq-Hoc"/>
@@ -125,7 +125,7 @@
                     </view>
                     <connections>
                         <outlet property="clockView" destination="ih9-6X-MuF" id="OvZ-CS-Xaj"/>
-                        <outlet property="timeButton" destination="aE6-aq-KJs" id="G7c-Hi-tNj"/>
+                        <outlet property="showTimeButton" destination="aE6-aq-KJs" id="MpZ-xp-LMK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
