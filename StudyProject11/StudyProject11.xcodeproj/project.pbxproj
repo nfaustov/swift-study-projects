@@ -15,8 +15,8 @@
 		8B0FA3B724C313C90025D22A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B0FA3B524C313C90025D22A /* LaunchScreen.storyboard */; };
 		8B4765D324D9C19700DD91BD /* CustomSegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4765D224D9C19700DD91BD /* CustomSegmentedControl.xib */; };
 		8B48151A24C443FA00A6EC14 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48151924C443FA00A6EC14 /* CustomButtonView.swift */; };
+		8B4BE64D24EC3AD900DE25B0 /* ClockHandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BE64C24EC3AD900DE25B0 /* ClockHandModel.swift */; };
 		8BBE520024D4CE2D00C234A3 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE51FF24D4CE2D00C234A3 /* CustomSegmentedControl.swift */; };
-		8BCEC33024C88569008191DB /* ClockHandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCEC32F24C88569008191DB /* ClockHandModel.swift */; };
 		8BE3950E24C4F3B20018C610 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3950D24C4F3B20018C610 /* ClockView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +31,8 @@
 		8B0FA3B824C313C90025D22A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B4765D224D9C19700DD91BD /* CustomSegmentedControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSegmentedControl.xib; sourceTree = "<group>"; };
 		8B48151924C443FA00A6EC14 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		8B4BE64C24EC3AD900DE25B0 /* ClockHandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHandModel.swift; sourceTree = "<group>"; };
 		8BBE51FF24D4CE2D00C234A3 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		8BCEC32F24C88569008191DB /* ClockHandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHandModel.swift; sourceTree = "<group>"; };
 		8BE3950D24C4F3B20018C610 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,8 +108,8 @@
 		8BE3950C24C4F36B0018C610 /* ClockView */ = {
 			isa = PBXGroup;
 			children = (
-				8BCEC32F24C88569008191DB /* ClockHandModel.swift */,
 				8BE3950D24C4F3B20018C610 /* ClockView.swift */,
+				8B4BE64C24EC3AD900DE25B0 /* ClockHandModel.swift */,
 			);
 			path = ClockView;
 			sourceTree = "<group>";
@@ -189,10 +189,10 @@
 				8BBE520024D4CE2D00C234A3 /* CustomSegmentedControl.swift in Sources */,
 				8B0FA3AF24C313C80025D22A /* ViewController.swift in Sources */,
 				8BE3950E24C4F3B20018C610 /* ClockView.swift in Sources */,
-				8BCEC33024C88569008191DB /* ClockHandModel.swift in Sources */,
 				8B0FA3AB24C313C80025D22A /* AppDelegate.swift in Sources */,
 				8B0FA3AD24C313C80025D22A /* SceneDelegate.swift in Sources */,
 				8B48151A24C443FA00A6EC14 /* CustomButtonView.swift in Sources */,
+				8B4BE64D24EC3AD900DE25B0 /* ClockHandModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

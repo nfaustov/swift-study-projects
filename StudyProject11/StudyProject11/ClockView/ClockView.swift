@@ -11,14 +11,25 @@ import UIKit
 @IBDesignable
 class ClockView: UIView {
     
-    private var hourPoints = 12
-    
     @IBInspectable var classicView: Bool = true {
         didSet {
             hourPoints = classicView ? 12 : 24
-            layoutIfNeeded()
         }
     }
+    
+    @IBInspectable var hourClockHandLength: CGFloat = 80 
+    @IBInspectable var hourClockHandWidth: CGFloat = 4
+    @IBInspectable var hourClockHandColor: UIColor = .black
+    
+    @IBInspectable var minuteClockHandLength: CGFloat = 110
+    @IBInspectable var minuteClockHandWidth: CGFloat = 2
+    @IBInspectable var minuteClockHandColor: UIColor = .black
+    
+    @IBInspectable var secondClockHandLength: CGFloat = 140
+    @IBInspectable var secondClockHandWidth: CGFloat = 1
+    @IBInspectable var secondClockHandColor: UIColor = .black
+    
+    private var hourPoints = 12
     
     private let calendar = Calendar.current
     
@@ -30,30 +41,18 @@ class ClockView: UIView {
         }
     }
     
-    private var displayLink: CADisplayLink?
-
     private var currentSecond: CGFloat = 0
-    private var currentMinute: CGFloat = 0
-    private var currentHour: CGFloat = 0
+    private var currentMinute: CGFloat = 25
+    private var currentHour: CGFloat = 8
     
-    @IBInspectable var hourClockHandLength: CGFloat = 80 { didSet { layoutIfNeeded() } }
-    @IBInspectable var hourClockHandWidth: CGFloat = 4 { didSet { layoutIfNeeded() } }
-    @IBInspectable var hourClockHandColor: UIColor = .black { didSet { layoutIfNeeded() } }
-    
-    @IBInspectable var minuteClockHandLength: CGFloat = 110 { didSet { layoutIfNeeded() } }
-    @IBInspectable var minuteClockHandWidth: CGFloat = 2 { didSet { layoutIfNeeded() } }
-    @IBInspectable var minuteClockHandColor: UIColor = .black { didSet { layoutIfNeeded() } }
-    
-    @IBInspectable var secondClockHandLength: CGFloat = 140 { didSet { layoutIfNeeded() } }
-    @IBInspectable var secondClockHandWidth: CGFloat = 1 { didSet { layoutIfNeeded() } }
-    @IBInspectable var secondClockHandColor: UIColor = .black { didSet { layoutIfNeeded() } }
+    private var displayLink: CADisplayLink?
     
     private var angle = CGFloat(3 * CGFloat.pi / 2)
     
     private var clockHands = [UIView]()
     
-    enum TimeValue: String {
-        case hour, minute, second
+    private enum TimeValue: Int {
+        case hour = 0, minute, second
     }
     
     private func angleIncrement(by timeValue: TimeValue) -> CGFloat {
@@ -63,26 +62,20 @@ class ClockView: UIView {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        //initialize()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
         initialize()
-    }
-    
-    deinit {
-        displayLink?.invalidate()
     }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         
         initialize()
+    }
+    
+    deinit {
+        displayLink?.invalidate()
     }
     
     func initialize() {
@@ -113,7 +106,7 @@ class ClockView: UIView {
         date = Date()
 
         for clockHand in clockHands {
-            let timeValue = TimeValue(rawValue: clockHand.restorationIdentifier ?? "")
+            let timeValue = TimeValue(rawValue: clockHand.tag)
             clockHand.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
             switch timeValue {
             case .hour:
@@ -189,7 +182,7 @@ class ClockView: UIView {
         clockHandView.transform = CGAffineTransform(rotationAngle: rotationAngle)
         clockHandView.backgroundColor = clockHandColor
         clockHandView.layer.cornerRadius = 6
-        clockHandView.restorationIdentifier = value.rawValue
+        clockHandView.tag = value.rawValue
         addSubview(clockHandView)
         clockHands.append(clockHandView)
     }
@@ -238,4 +231,3 @@ class ClockView: UIView {
         return CGPoint(x: x, y: y)
     }
 }
-

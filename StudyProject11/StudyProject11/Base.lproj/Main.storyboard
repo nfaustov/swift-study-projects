@@ -54,26 +54,51 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Wnj-pn-zDV"/>
                                     <constraint firstAttribute="width" constant="300" id="iXh-ne-XTJ"/>
                                     <constraint firstAttribute="width" secondItem="ih9-6X-MuF" secondAttribute="height" multiplier="1:1" id="lnA-SK-8gQ"/>
-                                    <constraint firstAttribute="width" secondItem="ih9-6X-MuF" secondAttribute="height" multiplier="1:1" id="p2o-sH-rbh"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="hourClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hourClockHandLength">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hourClockHandWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteClockHandLength">
+                                        <real key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteClockHandWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="minuteClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondClockHandLength">
+                                        <real key="value" value="140"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondClockHandWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="classicView" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Wnj-pn-zDV"/>
                                         <exclude reference="iXh-ne-XTJ"/>
-                                        <exclude reference="lnA-SK-8gQ"/>
-                                        <exclude reference="p2o-sH-rbh"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="Wnj-pn-zDV"/>
-                                        <include reference="p2o-sH-rbh"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="iXh-ne-XTJ"/>
-                                        <include reference="lnA-SK-8gQ"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -116,10 +141,19 @@
                         <variation key="heightClass=regular">
                             <mask key="constraints">
                                 <include reference="XgH-aT-psS"/>
-                                <include reference="Fa5-YP-4pg"/>
                                 <include reference="L2a-MP-ydw"/>
                                 <include reference="QZy-sN-zZG"/>
                                 <include reference="j8T-5t-77h"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Fa5-YP-4pg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Fa5-YP-4pg"/>
                             </mask>
                         </variation>
                     </view>
@@ -130,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="123"/>
+            <point key="canvasLocation" x="-732" y="104"/>
         </scene>
     </scenes>
 </document>

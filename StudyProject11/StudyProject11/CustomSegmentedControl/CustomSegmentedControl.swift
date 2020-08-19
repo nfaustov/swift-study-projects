@@ -15,50 +15,112 @@ protocol CustomSegmentedControlDelegate: AnyObject {
 @IBDesignable
 class CustomSegmentedControl: UIView {
     
-    @IBInspectable var cornerRadius: CGFloat = 5 { didSet { layoutIfNeeded() } }
+    @IBInspectable var cornerRadius: CGFloat = 5 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            activeView.layer.cornerRadius = cornerRadius
+        }
+    }
     
-    @IBInspectable var firstSegmentName: String = "First" { didSet { layoutIfNeeded() } }
-    @IBInspectable var secondSegmentName: String = "Second" { didSet { layoutIfNeeded() } }
-    @IBInspectable var thirdSegmentName: String = "Third" { didSet { layoutIfNeeded() } }
-    @IBInspectable var fourthSegmentName: String = "Fourth" { didSet { layoutIfNeeded() } }
-    @IBInspectable var fifthSegmentName: String = "Fifth" { didSet { layoutIfNeeded() } }
+    @IBInspectable var activeSegmentColor: UIColor = .white {
+        didSet {
+            activeView.backgroundColor = activeSegmentColor
+        }
+    }
     
-    @IBInspectable var activeSegmentColor: UIColor = .white { didSet { layoutIfNeeded() } }
-    @IBInspectable var backColor: UIColor = .systemGray4 { didSet { layoutIfNeeded() } }
+    @IBInspectable var backColor: UIColor = .systemGray4 {
+        didSet {
+            backgroundColor = backColor
+            layer.borderColor = backColor.cgColor
+        }
+    }
+    
+    @IBInspectable var firstSegmentName: String = "First" {
+        didSet {
+            firstSegmentLabel.text = firstSegmentName
+        }
+    }
+    
+    @IBInspectable var secondSegmentName: String = "Second" {
+        didSet {
+            secondSegmentLabel.text = secondSegmentName
+        }
+    }
+    
+    @IBInspectable var thirdSegmentName: String = "Third" {
+        didSet {
+            thirdSegmentLabel.text = thirdSegmentName
+        }
+    }
+    
+    @IBInspectable var fourthSegmentName: String = "Fourth" {
+        didSet {
+            fourthSegmentLabel.text = fourthSegmentName
+        }
+    }
+    
+    @IBInspectable var fifthSegmentName: String = "Fifth" {
+        didSet {
+            fifthSegmentLabel.text = fifthSegmentName
+        }
+    }
     
     @IBInspectable var segments: Int = 2 {
         didSet {
-            layoutIfNeeded()
             assert(segments <= 5, "Maximum 5 segments available")
             assert(segments > 1, "You must provide at least 2 segments ")
+            
+            stackView.arrangedSubviews.forEach {$0.removeFromSuperview()}
+            setSegments()
         }
     }
     
-    @IBInspectable var activeIndex: Int = 1 {
+    @IBInspectable var activeIndex: Int = 0 {
         didSet {
             assert(activeIndex < segments && activeIndex >= 0, "activeIndex is out of range")
+            
+            NSLayoutConstraint.deactivate(activeViewConstraints)
+            setActiveViewConstraints(for: activeIndex)
         }
     }
+    
+    private var firstSegmentLabel = UILabel()
+    private var secondSegmentLabel = UILabel()
+    private var thirdSegmentLabel = UILabel()
+    private var fourthSegmentLabel = UILabel()
+    private var fifthSegmentLabel = UILabel()
+    
+    private lazy var segmentLabels = [firstSegmentLabel, secondSegmentLabel, thirdSegmentLabel, fourthSegmentLabel, fifthSegmentLabel]
     
     private let activeView = UIView()
     private let stackView = UIStackView()
     
-    private var leadingSpace: NSLayoutConstraint?
-    private lazy var leadingOffset = activeView.leadingAnchor.constraint(equalTo: leadingAnchor)
+    private var activeViewConstraints = [NSLayoutConstraint]()
+    
+    private func setActiveViewConstraints(for index: Int) {
+        for i in stackView.arrangedSubviews.indices {
+            if i == index {
+                let segment = stackView.arrangedSubviews[index]
+                activeViewConstraints = [
+                    activeView.topAnchor.constraint(equalTo: segment.topAnchor),
+                    activeView.leadingAnchor.constraint(equalTo: segment.leadingAnchor),
+                    activeView.trailingAnchor.constraint(equalTo: segment.trailingAnchor),
+                    activeView.bottomAnchor.constraint(equalTo: segment.bottomAnchor)
+                ]
+                NSLayoutConstraint.activate(activeViewConstraints)
+            }
+        }
+    }
     
     private func configure() {
-        layer.cornerRadius = cornerRadius
-        backgroundColor = backColor
-        layer.borderColor = backColor.cgColor
         layer.borderWidth = 1
         clipsToBounds = true
 
-        activeView.backgroundColor = activeSegmentColor
-        activeView.layer.cornerRadius = cornerRadius
         activeView.layer.shadowOpacity = 0.8
         activeView.layer.shadowColor = UIColor.systemGray.cgColor
         activeView.layer.shadowRadius = 15
         addSubview(activeView)
+        activeView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.axis = .horizontal
         stackView.alignment = .fill
@@ -72,15 +134,16 @@ class CustomSegmentedControl: UIView {
         stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
-        let segmentsNames = [firstSegmentName, secondSegmentName, thirdSegmentName, fourthSegmentName, fifthSegmentName]
-        
+        setSegments()
+    }
+    
+    private func setSegments() {
         for index in 0..<segments {
             let segmentView = UIView()
             segmentView.backgroundColor = .clear
             stackView.addArrangedSubview(segmentView)
 
-            let segmentLabel = UILabel()
-            segmentLabel.text = segmentsNames[index]
+            let segmentLabel = segmentLabels[index]
             segmentView.addSubview(segmentLabel)
 
             segmentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -91,43 +154,25 @@ class CustomSegmentedControl: UIView {
             let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(recognizer:)))
             segmentView.addGestureRecognizer(tap)
         }
-        
-        leadingSpace = activeView.leadingAnchor.constraint(equalTo: stackView.arrangedSubviews[activeIndex].leadingAnchor)
-
-        activeView.translatesAutoresizingMaskIntoConstraints = false
-        leadingSpace?.isActive = true
-        activeView.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
-        activeView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
-        activeView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1.0 / CGFloat(segments), constant: 0).isActive = true
     }
     
     weak var delegate: CustomSegmentedControlDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        configure()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         configure()
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        super.traitCollectionDidChange(previousTraitCollection)
-
-        layoutIfNeeded()
-        leadingOffset.constant = stackView.arrangedSubviews[activeIndex].frame.origin.x
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        configure()
     }
     
     @objc func didTap(recognizer: UITapGestureRecognizer) {
         for (index, segment) in stackView.arrangedSubviews.enumerated() {
             if segment == recognizer.view {
-                leadingSpace?.isActive = false
-                leadingOffset.isActive = true
-                leadingOffset.constant = segment.frame.origin.x
                 activeIndex = index
                 delegate?.didSelectSegment(index: index)
             }

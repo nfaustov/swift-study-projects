@@ -11,23 +11,21 @@ import UIKit
 @IBDesignable
 class CustomButtonView: UIButton {
     
-    @IBInspectable private var cornerRadius: CGFloat = 12
-    @IBInspectable private var borderWidth: CGFloat = 2
-    @IBInspectable private var borderColor: UIColor = .black
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        layer.cornerRadius = cornerRadius
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor
+    @IBInspectable var cornerRadius: CGFloat = 12 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+        }
     }
     
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        
-        layer.cornerRadius = cornerRadius
-        layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.cgColor
+    @IBInspectable var borderWidth: CGFloat = 2 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = .black {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
     }
 }

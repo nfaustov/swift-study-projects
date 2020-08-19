@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     var landscape: [NSLayoutConstraint]?
     
     var isPortrait: Bool {
-        return UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isPortrait ?? false
+        return traitCollection.verticalSizeClass == .regular && traitCollection.horizontalSizeClass == .compact
     }
     
     override func viewDidLoad() {
@@ -34,6 +34,9 @@ class ViewController: UIViewController {
         
         let segmentedControl = CustomSegmentedControl.loadFromNIB()
         view.addSubview(segmentedControl)
+        
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         portrait = [
             segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
@@ -46,9 +49,6 @@ class ViewController: UIViewController {
             segmentedControl.centerXAnchor.constraint(equalTo: showTimeButton.centerXAnchor),
             segmentedControl.widthAnchor.constraint(equalTo: showTimeButton.widthAnchor)
         ]
-        
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         NSLayoutConstraint.activate(isPortrait ? portrait! : landscape!)
         

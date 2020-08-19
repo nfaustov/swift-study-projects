@@ -2,7 +2,7 @@
 //  ClockHandModel.swift
 //  StudyProject11
 //
-//  Created by Nikolai Faustov on 22.07.2020.
+//  Created by Nikolai Faustov on 18.08.2020.
 //  Copyright © 2020 Nikolai Faustov. All rights reserved.
 //
 

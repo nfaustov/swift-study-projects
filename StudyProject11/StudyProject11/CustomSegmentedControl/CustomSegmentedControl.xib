@@ -16,12 +16,27 @@
             <viewLayoutGuide key="safeArea" id="i4I-Pb-zKU"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="string" keyPath="firstSegmentName" value="12h"/>
-                <userDefinedRuntimeAttribute type="string" keyPath="secondSegmentName" value="24h"/>
                 <userDefinedRuntimeAttribute type="number" keyPath="segments">
                     <integer key="value" value="2"/>
                 </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="activeSegmentColor">
+                    <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="string" keyPath="secondSegmentName" value="24h"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="thirdSegmentName" value="3"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="fourthSegmentName" value="4"/>
+                <userDefinedRuntimeAttribute type="string" keyPath="fifthSegmentName" value="5"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="activeIndex">
+                    <integer key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="backColor">
+                    <color key="value" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="276.81159420289856" y="-949.55357142857133"/>
+            <point key="canvasLocation" x="155" y="-960"/>
         </view>
     </objects>
 </document>
