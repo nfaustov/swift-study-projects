@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StudyProject11" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aE6-aq-KJs" customClass="CustomButtonView" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="107" y="683.33333333333337" width="200" height="98.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="PxC-eL-PsX"/>
+                                </constraints>
+                                <state key="normal" title="Show current time">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PxC-eL-PsX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="PxC-eL-PsX"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="currentTimeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MAf-NK-E2G"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ih9-6X-MuF" customClass="ClockView" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="57" y="303" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Wnj-pn-zDV"/>
+                                    <constraint firstAttribute="width" constant="300" id="iXh-ne-XTJ"/>
+                                    <constraint firstAttribute="width" secondItem="ih9-6X-MuF" secondAttribute="height" multiplier="1:1" id="lnA-SK-8gQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="hourClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hourClockHandLength">
+                                        <real key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hourClockHandWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteClockHandLength">
+                                        <real key="value" value="110"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteClockHandWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="minuteClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondClockHandLength">
+                                        <real key="value" value="140"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondClockHandWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondClockHandColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="classicView" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Wnj-pn-zDV"/>
+                                        <exclude reference="iXh-ne-XTJ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Wnj-pn-zDV"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="iXh-ne-XTJ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Fa5-YP-4pg"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="GA7-RT-km9"/>
+                            <constraint firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="80" id="JYJ-XY-OUe"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.483" id="L2a-MP-ydw"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="leading" secondItem="ih9-6X-MuF" secondAttribute="trailing" constant="100" id="QVq-gq-Hoc"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QZy-sN-zZG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aE6-aq-KJs" secondAttribute="bottom" constant="80" id="XgH-aT-psS"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-36" id="bq5-TG-LMB"/>
+                            <constraint firstItem="aE6-aq-KJs" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.11" id="j8T-5t-77h"/>
+                            <constraint firstItem="ih9-6X-MuF" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vw9-Ou-wBG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XgH-aT-psS"/>
+                                <exclude reference="Fa5-YP-4pg"/>
+                                <exclude reference="GA7-RT-km9"/>
+                                <exclude reference="JYJ-XY-OUe"/>
+                                <exclude reference="L2a-MP-ydw"/>
+                                <exclude reference="QVq-gq-Hoc"/>
+                                <exclude reference="QZy-sN-zZG"/>
+                                <exclude reference="bq5-TG-LMB"/>
+                                <exclude reference="j8T-5t-77h"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="GA7-RT-km9"/>
+                                <include reference="JYJ-XY-OUe"/>
+                                <include reference="QVq-gq-Hoc"/>
+                                <include reference="bq5-TG-LMB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="XgH-aT-psS"/>
+                                <include reference="L2a-MP-ydw"/>
+                                <include reference="QZy-sN-zZG"/>
+                                <include reference="j8T-5t-77h"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Fa5-YP-4pg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="Fa5-YP-4pg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="clockView" destination="ih9-6X-MuF" id="OvZ-CS-Xaj"/>
+                        <outlet property="showTimeButton" destination="aE6-aq-KJs" id="MpZ-xp-LMK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-732" y="104"/>
+        </scene>
+    </scenes>
+</document>
