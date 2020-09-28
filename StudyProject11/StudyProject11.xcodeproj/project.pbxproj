@@ -16,8 +16,12 @@
 		8B4765D324D9C19700DD91BD /* CustomSegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B4765D224D9C19700DD91BD /* CustomSegmentedControl.xib */; };
 		8B48151A24C443FA00A6EC14 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B48151924C443FA00A6EC14 /* CustomButtonView.swift */; };
 		8B4BE64D24EC3AD900DE25B0 /* ClockHandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4BE64C24EC3AD900DE25B0 /* ClockHandModel.swift */; };
+		8B813ECD250FA5D900813835 /* SecureTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B813ECC250FA5D900813835 /* SecureTextField.swift */; };
+		8BA9D29424F01B9F004E0EB8 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA9D29324F01B9F004E0EB8 /* CustomSwitch.swift */; };
+		8BB1876A2514EA85000E9E0F /* BatteryChargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB187692514EA85000E9E0F /* BatteryChargeView.swift */; };
 		8BBE520024D4CE2D00C234A3 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBE51FF24D4CE2D00C234A3 /* CustomSegmentedControl.swift */; };
 		8BE3950E24C4F3B20018C610 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE3950D24C4F3B20018C610 /* ClockView.swift */; };
+		8BEDF97825082D4A00BD7827 /* CustomSwitch2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEDF97725082D4A00BD7827 /* CustomSwitch2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +36,12 @@
 		8B4765D224D9C19700DD91BD /* CustomSegmentedControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSegmentedControl.xib; sourceTree = "<group>"; };
 		8B48151924C443FA00A6EC14 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		8B4BE64C24EC3AD900DE25B0 /* ClockHandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockHandModel.swift; sourceTree = "<group>"; };
+		8B813ECC250FA5D900813835 /* SecureTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTextField.swift; sourceTree = "<group>"; };
+		8BA9D29324F01B9F004E0EB8 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
+		8BB187692514EA85000E9E0F /* BatteryChargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryChargeView.swift; sourceTree = "<group>"; };
 		8BBE51FF24D4CE2D00C234A3 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		8BE3950D24C4F3B20018C610 /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		8BEDF97725082D4A00BD7827 /* CustomSwitch2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,9 @@
 				8B48151824C4436800A6EC14 /* CustomButton */,
 				8B48151F24C4930500A6EC14 /* CustomSegmentedControl */,
 				8BE3950C24C4F36B0018C610 /* ClockView */,
+				8BA9D29524F01C98004E0EB8 /* CustomSwitches */,
+				8B813ECE250FA65700813835 /* SecureTextField */,
+				8BB187682514EA3B000E9E0F /* BatteryChargeView */,
 				8B0FA3AE24C313C80025D22A /* ViewController.swift */,
 				8B0FA3B024C313C80025D22A /* Main.storyboard */,
 				8B0FA3B324C313C90025D22A /* Assets.xcassets */,
@@ -103,6 +114,31 @@
 				8B4765D224D9C19700DD91BD /* CustomSegmentedControl.xib */,
 			);
 			path = CustomSegmentedControl;
+			sourceTree = "<group>";
+		};
+		8B813ECE250FA65700813835 /* SecureTextField */ = {
+			isa = PBXGroup;
+			children = (
+				8B813ECC250FA5D900813835 /* SecureTextField.swift */,
+			);
+			path = SecureTextField;
+			sourceTree = "<group>";
+		};
+		8BA9D29524F01C98004E0EB8 /* CustomSwitches */ = {
+			isa = PBXGroup;
+			children = (
+				8BA9D29324F01B9F004E0EB8 /* CustomSwitch.swift */,
+				8BEDF97725082D4A00BD7827 /* CustomSwitch2.swift */,
+			);
+			path = CustomSwitches;
+			sourceTree = "<group>";
+		};
+		8BB187682514EA3B000E9E0F /* BatteryChargeView */ = {
+			isa = PBXGroup;
+			children = (
+				8BB187692514EA85000E9E0F /* BatteryChargeView.swift */,
+			);
+			path = BatteryChargeView;
 			sourceTree = "<group>";
 		};
 		8BE3950C24C4F36B0018C610 /* ClockView */ = {
@@ -188,10 +224,14 @@
 			files = (
 				8BBE520024D4CE2D00C234A3 /* CustomSegmentedControl.swift in Sources */,
 				8B0FA3AF24C313C80025D22A /* ViewController.swift in Sources */,
+				8BA9D29424F01B9F004E0EB8 /* CustomSwitch.swift in Sources */,
+				8B813ECD250FA5D900813835 /* SecureTextField.swift in Sources */,
+				8BEDF97825082D4A00BD7827 /* CustomSwitch2.swift in Sources */,
 				8BE3950E24C4F3B20018C610 /* ClockView.swift in Sources */,
 				8B0FA3AB24C313C80025D22A /* AppDelegate.swift in Sources */,
 				8B0FA3AD24C313C80025D22A /* SceneDelegate.swift in Sources */,
 				8B48151A24C443FA00A6EC14 /* CustomButtonView.swift in Sources */,
+				8BB1876A2514EA85000E9E0F /* BatteryChargeView.swift in Sources */,
 				8B4BE64D24EC3AD900DE25B0 /* ClockHandModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

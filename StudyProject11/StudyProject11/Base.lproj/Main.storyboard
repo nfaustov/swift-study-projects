@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FHo-Am-4In">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StudyProject11" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="StudyProject11" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,6 +165,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="104"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lgh-dB-TJc">
+            <objects>
+                <viewController id="FHo-Am-4In" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ATi-rl-dhm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mea-Ai-EnS" customClass="CustomSwitch" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="134.66666666666666" y="94" width="144.99999999999997" height="65"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="hRx-CE-QM1"/>
+                                    <constraint firstAttribute="height" constant="65" id="xEY-0M-ZfE"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="state" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="onLabelText" value="ON"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onTextColor">
+                                        <color key="value" red="0.34395629170000003" green="0.72702294590000005" blue="0.6156759262" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="offLabelText" value="OFF"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="offTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onBackgroundColor">
+                                        <color key="value" red="0.21697857979999999" green="0.28084209560000001" blue="0.35687285660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="onSelectorColor">
+                                        <color key="value" red="0.34395629170000003" green="0.72702294590000005" blue="0.6156759262" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="offBackgroundColor">
+                                        <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="offSelectorColor">
+                                        <color key="value" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="selectorSizeRatio">
+                                        <real key="value" value="0.59999999999999998"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6d-GB-5P5" customClass="CustomSwitch2" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="134.66666666666666" y="199" width="144.99999999999997" height="65"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="Q4s-YQ-mXQ"/>
+                                    <constraint firstAttribute="height" constant="65" id="XjP-r7-GeP"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJy-fT-OGR" customClass="SecureTextField" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="20" y="344" width="320" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="vh7-Wd-tVM"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtA-Ro-6H8" customClass="BatteryChargeView" customModule="StudyProject11" customModuleProvider="target">
+                                <rect key="frame" x="49.333333333333343" y="444" width="315.33333333333326" height="398"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TtA-Ro-6H8" secondAttribute="height" multiplier="42:53" id="USz-Tg-hfr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="batteryChargeLevel">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mea-Ai-EnS" firstAttribute="top" secondItem="kIe-RY-22l" secondAttribute="top" constant="50" id="3Gi-tO-Ssj"/>
+                            <constraint firstItem="mea-Ai-EnS" firstAttribute="centerX" secondItem="ATi-rl-dhm" secondAttribute="centerX" id="BLR-cY-xOa"/>
+                            <constraint firstItem="oJy-fT-OGR" firstAttribute="top" secondItem="g6d-GB-5P5" secondAttribute="bottom" constant="80" id="HDC-zE-mAJ"/>
+                            <constraint firstItem="kIe-RY-22l" firstAttribute="bottom" secondItem="TtA-Ro-6H8" secondAttribute="bottom" constant="20" id="L9b-Rb-Qgd"/>
+                            <constraint firstItem="oJy-fT-OGR" firstAttribute="leading" secondItem="kIe-RY-22l" secondAttribute="leading" constant="20" id="QHH-54-eaF"/>
+                            <constraint firstItem="kIe-RY-22l" firstAttribute="trailing" secondItem="oJy-fT-OGR" secondAttribute="trailing" constant="74" id="Qpk-B1-7Nx"/>
+                            <constraint firstItem="TtA-Ro-6H8" firstAttribute="top" secondItem="oJy-fT-OGR" secondAttribute="bottom" constant="50" id="Ybk-cf-v0f"/>
+                            <constraint firstItem="g6d-GB-5P5" firstAttribute="centerX" secondItem="ATi-rl-dhm" secondAttribute="centerX" id="bcG-sF-UHD"/>
+                            <constraint firstItem="g6d-GB-5P5" firstAttribute="top" secondItem="mea-Ai-EnS" secondAttribute="bottom" constant="40" id="qVd-3S-OMW"/>
+                            <constraint firstItem="TtA-Ro-6H8" firstAttribute="centerX" secondItem="ATi-rl-dhm" secondAttribute="centerX" id="vKJ-5A-edG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kIe-RY-22l"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="186-Lj-sss" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="103.79464285714285"/>
         </scene>
     </scenes>
 </document>
