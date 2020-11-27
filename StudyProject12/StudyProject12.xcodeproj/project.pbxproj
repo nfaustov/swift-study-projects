@@ -3,27 +3,43 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8B1BF0D925261DEF003DD98A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BF0D825261DEF003DD98A /* AppDelegate.swift */; };
 		8B1BF0DB25261DEF003DD98A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BF0DA25261DEF003DD98A /* SceneDelegate.swift */; };
-		8B1BF0DD25261DEF003DD98A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1BF0DC25261DEF003DD98A /* ViewController.swift */; };
 		8B1BF0E025261DEF003DD98A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BF0DE25261DEF003DD98A /* Main.storyboard */; };
 		8B1BF0E225261DEF003DD98A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BF0E125261DEF003DD98A /* Assets.xcassets */; };
 		8B1BF0E525261DEF003DD98A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B1BF0E325261DEF003DD98A /* LaunchScreen.storyboard */; };
+		8BAF4CC2256FF12B00585302 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CC1256FF12B00585302 /* DefaultViewController.swift */; };
+		8BAF4CC5256FF14300585302 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CC4256FF14300585302 /* AlamofireViewController.swift */; };
+		8BAF4CDE2570159200585302 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CDD2570159200585302 /* ViewController.swift */; };
+		8BAF4CE52570774C00585302 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CE42570774C00585302 /* WeatherForecast.swift */; };
+		8BAF4CEA2570783E00585302 /* ForecastWeatherLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CE92570783E00585302 /* ForecastWeatherLoader.swift */; };
+		8BAF4CED257080FE00585302 /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CEC257080FE00585302 /* ForecastTableViewCell.swift */; };
+		8BAF4CF02570823900585302 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CEF2570823900585302 /* Forecast.swift */; };
+		EC366D54B4E3BBCDC32568DA /* Pods_StudyProject12.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F586F66DBCC4A6D8F46CBE92 /* Pods_StudyProject12.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B1BF0D525261DEF003DD98A /* StudyProject12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyProject12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B1BF0D825261DEF003DD98A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B1BF0DA25261DEF003DD98A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8B1BF0DC25261DEF003DD98A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8B1BF0DF25261DEF003DD98A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B1BF0E125261DEF003DD98A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B1BF0E425261DEF003DD98A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B1BF0E625261DEF003DD98A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BAF4CC1256FF12B00585302 /* DefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
+		8BAF4CC4256FF14300585302 /* AlamofireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
+		8BAF4CDD2570159200585302 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BAF4CE42570774C00585302 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
+		8BAF4CE92570783E00585302 /* ForecastWeatherLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherLoader.swift; sourceTree = "<group>"; };
+		8BAF4CEC257080FE00585302 /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		8BAF4CEF2570823900585302 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
+		B6D3FE8A41C6E1A599CB13D7 /* Pods-StudyProject12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyProject12.release.xcconfig"; path = "Target Support Files/Pods-StudyProject12/Pods-StudyProject12.release.xcconfig"; sourceTree = "<group>"; };
+		D3B0E5387852AD7DD6123CAA /* Pods-StudyProject12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyProject12.debug.xcconfig"; path = "Target Support Files/Pods-StudyProject12/Pods-StudyProject12.debug.xcconfig"; sourceTree = "<group>"; };
+		F586F66DBCC4A6D8F46CBE92 /* Pods_StudyProject12.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyProject12.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC366D54B4E3BBCDC32568DA /* Pods_StudyProject12.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +59,8 @@
 			children = (
 				8B1BF0D725261DEF003DD98A /* StudyProject12 */,
 				8B1BF0D625261DEF003DD98A /* Products */,
+				D736C21361EDE35917DD896C /* Pods */,
+				AADF86C914178A7409249C20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +75,13 @@
 		8B1BF0D725261DEF003DD98A /* StudyProject12 */ = {
 			isa = PBXGroup;
 			children = (
-				8B1BF0EE25261E11003DD98A /* Supporting Files */,
-				8B1BF0DC25261DEF003DD98A /* ViewController.swift */,
+				8BAF4CDD2570159200585302 /* ViewController.swift */,
+				8BAF4CC8256FF15A00585302 /* Default */,
+				8BAF4CCA256FF16700585302 /* Alamofire */,
+				8BAF4CE42570774C00585302 /* WeatherForecast.swift */,
+				8BAF4CEF2570823900585302 /* Forecast.swift */,
 				8B1BF0DE25261DEF003DD98A /* Main.storyboard */,
+				8B1BF0EE25261E11003DD98A /* Supporting Files */,
 				8B1BF0E625261DEF003DD98A /* Info.plist */,
 			);
 			path = StudyProject12;
@@ -75,6 +98,41 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8BAF4CC8256FF15A00585302 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				8BAF4CC1256FF12B00585302 /* DefaultViewController.swift */,
+				8BAF4CE92570783E00585302 /* ForecastWeatherLoader.swift */,
+				8BAF4CEC257080FE00585302 /* ForecastTableViewCell.swift */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		8BAF4CCA256FF16700585302 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				8BAF4CC4256FF14300585302 /* AlamofireViewController.swift */,
+			);
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		AADF86C914178A7409249C20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F586F66DBCC4A6D8F46CBE92 /* Pods_StudyProject12.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D736C21361EDE35917DD896C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3B0E5387852AD7DD6123CAA /* Pods-StudyProject12.debug.xcconfig */,
+				B6D3FE8A41C6E1A599CB13D7 /* Pods-StudyProject12.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +140,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B1BF0E925261DEF003DD98A /* Build configuration list for PBXNativeTarget "StudyProject12" */;
 			buildPhases = (
+				8CBE98441506DD7C499A3AFC /* [CP] Check Pods Manifest.lock */,
 				8B1BF0D125261DEF003DD98A /* Sources */,
 				8B1BF0D225261DEF003DD98A /* Frameworks */,
 				8B1BF0D325261DEF003DD98A /* Resources */,
+				AE9CE3A77B9BB8D1BE5257E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,14 +200,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8CBE98441506DD7C499A3AFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StudyProject12-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE9CE3A77B9BB8D1BE5257E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyProject12/Pods-StudyProject12-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StudyProject12/Pods-StudyProject12-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StudyProject12/Pods-StudyProject12-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8B1BF0D125261DEF003DD98A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1BF0DD25261DEF003DD98A /* ViewController.swift in Sources */,
+				8BAF4CC2256FF12B00585302 /* DefaultViewController.swift in Sources */,
 				8B1BF0D925261DEF003DD98A /* AppDelegate.swift in Sources */,
 				8B1BF0DB25261DEF003DD98A /* SceneDelegate.swift in Sources */,
+				8BAF4CEA2570783E00585302 /* ForecastWeatherLoader.swift in Sources */,
+				8BAF4CDE2570159200585302 /* ViewController.swift in Sources */,
+				8BAF4CED257080FE00585302 /* ForecastTableViewCell.swift in Sources */,
+				8BAF4CC5256FF14300585302 /* AlamofireViewController.swift in Sources */,
+				8BAF4CF02570823900585302 /* Forecast.swift in Sources */,
+				8BAF4CE52570774C00585302 /* WeatherForecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +399,7 @@
 		};
 		8B1BF0EA25261DEF003DD98A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3B0E5387852AD7DD6123CAA /* Pods-StudyProject12.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +420,7 @@
 		};
 		8B1BF0EB25261DEF003DD98A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6D3FE8A41C6E1A599CB13D7 /* Pods-StudyProject12.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
