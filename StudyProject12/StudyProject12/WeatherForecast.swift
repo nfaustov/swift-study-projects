@@ -11,7 +11,7 @@ class WeatherForecast {
     
     var dailyForecast = [Forecast]()
     
-    var currentWeatherDescription: String
+    var weatherDescription: String
     var currentTemperature: Double
     var currentFeelsLike: Double
     var currentWindSpeed: Double
@@ -37,7 +37,7 @@ class WeatherForecast {
               let icon = weather["icon"] as? String,
               let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png") else { return nil }
         
-        currentWeatherDescription = description
+        weatherDescription = description
         self.currentTemperature = currentTemperature
         self.currentFeelsLike = currentFeelsLike
         self.currentWindSpeed = currentWindSpeed

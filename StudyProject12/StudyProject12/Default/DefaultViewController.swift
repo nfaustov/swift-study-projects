@@ -33,11 +33,13 @@ class DefaultViewController: UIViewController {
         
         let loader = ForecastWeatherLoader()
         loader.delegate = self
+        
+        forecastTableView.dataSource = self
     }
 
-    var dailyForecast: [Forecast]! {
+    var dailyForecast = [Forecast]() {
         didSet {
-            forecastTableView.dataSource = self
+            forecastTableView.reloadData()
         }
     }
 }
@@ -45,7 +47,7 @@ class DefaultViewController: UIViewController {
 extension DefaultViewController: ForecastWeatherLoaderDelegate {
     func loaded(forecast: WeatherForecast) {
         dailyForecast = forecast.dailyForecast
-        weatherDescriptionLabel.text = forecast.currentWeatherDescription
+        weatherDescriptionLabel.text = forecast.weatherDescription
         temperatureLabel.text = "\(Int(forecast.currentTemperature))°C"
         feelsLikeLabel.text = "\(Int(forecast.currentFeelsLike))°C"
         windLabel.text = "\(forecast.currentWindSpeed)м/с"
