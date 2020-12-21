@@ -9,7 +9,7 @@ import Foundation
 
 class WeatherForecast {
     
-    var dailyForecast = [Forecast]()
+    var dailyForecast = [DailyForecast]()
     
     var weatherDescription: String
     var currentTemperature: Double
@@ -30,10 +30,9 @@ class WeatherForecast {
               let currentHumidity = current["humidity"] as? Int,
               let currentPressure = current["pressure"] as? Int,
               let currentSunrise = current["sunrise"] as? Int,
-              let currentSunset = current["sunset"] as? Int else { return nil }
-        
-        let weather = weatherArray[0]
-        guard let description = weather["description"] as? String,
+              let currentSunset = current["sunset"] as? Int,
+              let weather = weatherArray.first,
+              let description = weather["description"] as? String,
               let icon = weather["icon"] as? String,
               let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png") else { return nil }
         
@@ -53,15 +52,30 @@ class WeatherForecast {
                   let temperature = day["temp"] as? [String : Double],
                   let dayTemp = temperature["day"],
                   let nightTemp = temperature["night"],
-                  let weatherArray = day["weather"] as? [[String : Any]] else { return nil }
-            
-            let weather = weatherArray[0]
-            guard let icon = weather["icon"] as? String,
-                  let iconURL = URL(string: "https://openweathermap.org/img/wn/\(icon)@2x.png") else { return nil }
+                  let weatherArray = day["weather"] as? [[String : Any]],
+                  let weather = weatherArray.first,
+                  let icon = weather["icon"] as? String else { return nil }
             
             let date = Date(timeIntervalSince1970: TimeInterval(forecastDate))
-            let forecast = Forecast(date: date, imageURL: iconURL, dayTemperature: dayTemp, nightTemperature: nightTemp)
+            let temp = Temperature(day: dayTemp, night: nightTemp)
+            let dailyWeather = Weather(icon: icon)
+            let forecast = DailyForecast(dt: date, temp: temp, weather: [dailyWeather])
             dailyForecast.append(forecast)
         }
+    }
+    
+    init?(from response: WeeklyForecastResponse) {
+        dailyForecast = response.daily
+        guard let weather = response.current.weather.first else { return nil }
+        weatherDescription = weather.description ?? ""
+        currentTemperature = response.current.temp
+        currentFeelsLike = response.current.feelsLike
+        currentWindSpeed = response.current.windSpeed
+        currentHumidity = response.current.humidity
+        currentPressure = response.current.pressure
+        currentSunrise = response.current.sunrise
+        currentSunset = response.current.sunset
+        guard let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return nil}
+        currenticonURL = iconURL
     }
 }
