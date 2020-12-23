@@ -5,12 +5,14 @@
 //  Created by Nikolai Faustov on 17.12.2020.
 //
 
-import Foundation
 import UIKit
 
 protocol WeatherService {
-    
-    func loader(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void)
+    func load(/*decoder: WeatherDecoder?, */completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void)
+}
+
+protocol WeatherDecoder {
+    func decode(_ raw: Data) -> WeatherForecast?
 }
 
 enum WeatherError: Error {

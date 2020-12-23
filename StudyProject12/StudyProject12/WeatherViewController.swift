@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class WeatherViewController: UIViewController {
 
     var weatherService: WeatherService!
     
-    let dateFormatter = DateFormatter()
+    private let dateFormatter: DateFormatter = {
+        let format = DateFormatter()
+        format.dateFormat = "H:mm"
+        return format
+    }()
     
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -29,9 +34,26 @@ class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateFormatter.dateFormat = "H:mm"
-        
         cityLabel.text = "Москва"
+        
+        if tabBarItem.tag == 0 {
+            weatherService = AlamofireWeatherService()
+        } else if tabBarItem.tag == 1 {
+            let decoder = HandWeatherDecoder()
+            weatherService = URLSessionWeatherService(decoder: decoder)
+        } else if tabBarItem.tag == 2 {
+            let decoder = CodableWeatherDecoder()
+            weatherService = URLSessionWeatherService(decoder: decoder)
+        }
+        
+        weatherService.load { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure(let error): print(error)
+            case .success(let forecast):
+                self.configure(forecast: forecast)
+            }
+        }
         
         forecastTableView.dataSource = self
     }
@@ -52,6 +74,7 @@ class WeatherViewController: UIViewController {
         pressureLabel.text = "\(Int(Double(forecast.currentPressure) * 0.75))мм рт. ст."
         sunriseLabel.text = dateFormatter.string(from: forecast.currentSunrise)
         sunsetLabel.text = dateFormatter.string(from: forecast.currentSunset)
+        weatherImageView.af.setImage(withURL: forecast.currenticonURL)
     }
     
 }

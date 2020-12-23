@@ -5,12 +5,12 @@
 //  Created by Nikolai Faustov on 16.12.2020.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 
-class AlamofireWeatherService: WeatherService {
+final class AlamofireWeatherService: WeatherService {
     
-    func loader(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void) {
+    func load(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void) {
         let APIKey = "3d1181b648f850729ee6c3a6b082bb57"
         let url = "https://api.openweathermap.org/data/2.5/onecall?lat=55.753960&lon=37.620393&exclude=minutely,hourly,alerts&units=metric&lang=ru&appid=\(APIKey)"
         

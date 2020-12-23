@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherForecast {
+final class WeatherForecast {
     
     var dailyForecast = [DailyForecast]()
     
@@ -65,8 +65,10 @@ class WeatherForecast {
     }
     
     init?(from response: WeeklyForecastResponse) {
+        guard let weather = response.current.weather.first,
+              let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return nil}
+        
         dailyForecast = response.daily
-        guard let weather = response.current.weather.first else { return nil }
         weatherDescription = weather.description ?? ""
         currentTemperature = response.current.temp
         currentFeelsLike = response.current.feelsLike
@@ -75,7 +77,6 @@ class WeatherForecast {
         currentPressure = response.current.pressure
         currentSunrise = response.current.sunrise
         currentSunset = response.current.sunset
-        guard let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return nil}
         currenticonURL = iconURL
     }
 }

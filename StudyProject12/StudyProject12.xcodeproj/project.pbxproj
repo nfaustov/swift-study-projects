@@ -18,12 +18,13 @@
 		8B4B913A258D584600CF454C /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B9139258D584600CF454C /* WeatherViewController.swift */; };
 		8B4B914D258DA6FA00CF454C /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4B914C258DA6FA00CF454C /* AlamofireImage.framework */; };
 		8B902671258E45890006EF74 /* WeeklyForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B902670258E45890006EF74 /* WeeklyForecastResponse.swift */; };
-		8B902675258E6A9B0006EF74 /* DecodingWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B902674258E6A9B0006EF74 /* DecodingWeatherService.swift */; };
 		8BAF4CE52570774C00585302 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAF4CE42570774C00585302 /* WeatherForecast.swift */; };
 		8BCF33C7258A82AE0044AEB2 /* URLSessionWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF33C6258A82AE0044AEB2 /* URLSessionWeatherService.swift */; };
 		8BCF33CB258A84AD0044AEB2 /* AlamofireWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF33CA258A84AD0044AEB2 /* AlamofireWeatherService.swift */; };
 		8BCF33DB258BBC160044AEB2 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF33DA258BBC160044AEB2 /* WeatherService.swift */; };
 		8BCF33E0258BBC6E0044AEB2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCF33DF258BBC6E0044AEB2 /* TabBarController.swift */; };
+		8BEE0DAC25927D080068177D /* CodableWeatherDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE0DAB25927D080068177D /* CodableWeatherDecoder.swift */; };
+		8BEE0DAF259280470068177D /* HandWeatherDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE0DAE259280470068177D /* HandWeatherDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,12 +42,13 @@
 		8B4B9139258D584600CF454C /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		8B4B914C258DA6FA00CF454C /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		8B902670258E45890006EF74 /* WeeklyForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyForecastResponse.swift; sourceTree = "<group>"; };
-		8B902674258E6A9B0006EF74 /* DecodingWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingWeatherService.swift; sourceTree = "<group>"; };
 		8BAF4CE42570774C00585302 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
 		8BCF33C6258A82AE0044AEB2 /* URLSessionWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionWeatherService.swift; sourceTree = "<group>"; };
 		8BCF33CA258A84AD0044AEB2 /* AlamofireWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireWeatherService.swift; sourceTree = "<group>"; };
 		8BCF33DA258BBC160044AEB2 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		8BCF33DF258BBC6E0044AEB2 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8BEE0DAB25927D080068177D /* CodableWeatherDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableWeatherDecoder.swift; sourceTree = "<group>"; };
+		8BEE0DAE259280470068177D /* HandWeatherDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandWeatherDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +133,8 @@
 				8BCF33DA258BBC160044AEB2 /* WeatherService.swift */,
 				8BCF33C6258A82AE0044AEB2 /* URLSessionWeatherService.swift */,
 				8BCF33CA258A84AD0044AEB2 /* AlamofireWeatherService.swift */,
-				8B902674258E6A9B0006EF74 /* DecodingWeatherService.swift */,
+				8BEE0DAB25927D080068177D /* CodableWeatherDecoder.swift */,
+				8BEE0DAE259280470068177D /* HandWeatherDecoder.swift */,
 			);
 			path = WeatherServices;
 			sourceTree = "<group>";
@@ -235,8 +238,9 @@
 				8BCF33DB258BBC160044AEB2 /* WeatherService.swift in Sources */,
 				8B4B9128258CFCBC00CF454C /* ForecastTableViewCell.swift in Sources */,
 				8BCF33CB258A84AD0044AEB2 /* AlamofireWeatherService.swift in Sources */,
-				8B902675258E6A9B0006EF74 /* DecodingWeatherService.swift in Sources */,
 				8B902671258E45890006EF74 /* WeeklyForecastResponse.swift in Sources */,
+				8BEE0DAF259280470068177D /* HandWeatherDecoder.swift in Sources */,
+				8BEE0DAC25927D080068177D /* CodableWeatherDecoder.swift in Sources */,
 				8BCF33C7258A82AE0044AEB2 /* URLSessionWeatherService.swift in Sources */,
 				8BCF33E0258BBC6E0044AEB2 /* TabBarController.swift in Sources */,
 				8BAF4CE52570774C00585302 /* WeatherForecast.swift in Sources */,

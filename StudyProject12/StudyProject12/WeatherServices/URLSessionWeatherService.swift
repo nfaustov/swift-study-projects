@@ -5,13 +5,18 @@
 //  Created by Nikolai Faustov on 16.12.2020.
 //
 
-import Foundation
+import UIKit
 
-class URLSessionWeatherService: WeatherService {
+final class URLSessionWeatherService: WeatherService {
     
-    func loader(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void) {
+    private let decoder: WeatherDecoder
+    
+    init(decoder: WeatherDecoder) {
+        self.decoder = decoder
+    }
+    
+    func load(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void) {
         let APIKey = "3d1181b648f850729ee6c3a6b082bb57"
-        
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=55.753960&lon=37.620393&exclude=minutely,hourly,alerts&units=metric&lang=ru&appid=\(APIKey)") else {
             completion(.failure(.unavailableURL))
             return
@@ -23,8 +28,7 @@ class URLSessionWeatherService: WeatherService {
                 completion(.failure(.noDataAvailable))
                 return
             }
-            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-            if let dictionary = json as? NSDictionary, let weatherForecast = WeatherForecast(from: dictionary) {
+            if let weatherForecast = self.decoder.decode(data) {
                 DispatchQueue.main.async {
                     completion(.success(weatherForecast))
                 }
