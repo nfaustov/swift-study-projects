@@ -18,7 +18,7 @@ final class URLSessionWeatherService: WeatherService {
     func load(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void) {
         let APIKey = "3d1181b648f850729ee6c3a6b082bb57"
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=55.753960&lon=37.620393&exclude=minutely,hourly,alerts&units=metric&lang=ru&appid=\(APIKey)") else {
-            completion(.failure(.unavailableURL))
+            completion(.failure(.noDataAvailable))
             return
         }
         
@@ -29,9 +29,7 @@ final class URLSessionWeatherService: WeatherService {
                 return
             }
             if let weatherForecast = self.decoder.decode(data) {
-                DispatchQueue.main.async {
-                    completion(.success(weatherForecast))
-                }
+                completion(.success(weatherForecast))
             } else {
                 completion(.failure(.canNotProcessData))
             }

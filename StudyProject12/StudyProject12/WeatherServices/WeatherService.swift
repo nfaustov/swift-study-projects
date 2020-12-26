@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WeatherService {
-    func load(/*decoder: WeatherDecoder?, */completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void)
+    func load(completion: @escaping (Result<WeatherForecast, WeatherError>) -> Void)
 }
 
 protocol WeatherDecoder {

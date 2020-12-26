@@ -1,2 +1,4 @@
 github "Alamofire/Alamofire" ~> 5.2
 github "Alamofire/AlamofireImage" ~> 4.1
+github "ishkawa/APIKit" ~> 5.0
+

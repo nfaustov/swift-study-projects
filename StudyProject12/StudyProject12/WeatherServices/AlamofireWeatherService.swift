@@ -24,9 +24,7 @@ final class AlamofireWeatherService: WeatherService {
                 completion(.failure(.canNotProcessData))
                 return
             }
-            DispatchQueue.main.async {
-                completion(.success(weatherForecast))
-            }
+            completion(.success(weatherForecast))
         }
     }
 }

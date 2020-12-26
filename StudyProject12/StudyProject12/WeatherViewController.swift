@@ -8,7 +8,7 @@
 import UIKit
 import AlamofireImage
 
-class WeatherViewController: UIViewController {
+final class WeatherViewController: UIViewController {
 
     var weatherService: WeatherService!
     
@@ -36,35 +36,29 @@ class WeatherViewController: UIViewController {
         
         cityLabel.text = "Москва"
         
-        if tabBarItem.tag == 0 {
-            weatherService = AlamofireWeatherService()
-        } else if tabBarItem.tag == 1 {
-            let decoder = HandWeatherDecoder()
-            weatherService = URLSessionWeatherService(decoder: decoder)
-        } else if tabBarItem.tag == 2 {
-            let decoder = CodableWeatherDecoder()
-            weatherService = URLSessionWeatherService(decoder: decoder)
-        }
-        
         weatherService.load { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure(let error): print(error)
             case .success(let forecast):
-                self.configure(forecast: forecast)
+                DispatchQueue.main.async {
+                    self.configure(forecast: forecast)
+                }
             }
         }
         
         forecastTableView.dataSource = self
     }
     
-    var dailyForecast = [DailyForecast]() {
+    private var dailyForecast = [DailyForecast]() {
         didSet {
-            forecastTableView.reloadData()
+            DispatchQueue.main.async {
+                self.forecastTableView.reloadData()
+            }
         }
     }
     
-    func configure(forecast: WeatherForecast) {
+    private func configure(forecast: WeatherForecast) {
         dailyForecast = forecast.dailyForecast
         weatherDescriptionLabel.text = forecast.weatherDescription
         temperatureLabel.text = "\(Int(forecast.currentTemperature))°C"
@@ -76,7 +70,6 @@ class WeatherViewController: UIViewController {
         sunsetLabel.text = dateFormatter.string(from: forecast.currentSunset)
         weatherImageView.af.setImage(withURL: forecast.currenticonURL)
     }
-    
 }
 
 extension WeatherViewController: UITableViewDataSource {
