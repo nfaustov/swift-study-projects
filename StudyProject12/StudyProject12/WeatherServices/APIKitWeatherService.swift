@@ -18,8 +18,8 @@ final class APIKitWeatherService: WeatherService {
             switch result {
             case .success(let weatherForecast):
                 completion(.success(weatherForecast))
-            case .failure(let error):
-                print(error)
+            case .failure:
+                completion(.failure(.canNotProcessData))
             }
         }
     }
@@ -27,19 +27,13 @@ final class APIKitWeatherService: WeatherService {
 
 struct WeatherRequest: Request {
     
-    typealias Response = WeatherForecast
-    
     var baseURL: URL {
         return URL(string: "https://api.openweathermap.org/data/2.5/onecall?lat=55.753960&lon=37.620393&exclude=minutely,hourly,alerts&units=metric&lang=ru&appid=3d1181b648f850729ee6c3a6b082bb57")!
     }
     
-    var method: HTTPMethod {
-        return .get
-    }
+    let method = HTTPMethod.get
     
-    var path: String {
-        return ""
-    }
+    let path = ""
     
     func response(from object: Any, urlResponse: HTTPURLResponse) throws -> WeatherForecast {
         guard let dictionary = object as? NSDictionary,
