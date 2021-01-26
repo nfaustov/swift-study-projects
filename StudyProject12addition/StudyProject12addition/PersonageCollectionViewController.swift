@@ -9,18 +9,29 @@ import UIKit
 
 
 class PersonageCollectionViewController: UICollectionViewController {
-    private let dataSource = PersonageDataSource()
+//    var dataSource: PersonageDataSource!
+    var dataSource: PersonagesCollectionDataSource!
+    
+    var personagesCount = 0 {
+        didSet {
+//            dataSource = PersonageDataSource(dataCount: personagesCount)
+            dataSource = PersonagesCollectionDataSource(dataCount: personagesCount)
+            collectionView.dataSource = dataSource
+            collectionView.prefetchDataSource = dataSource
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        collectionView.dataSource = dataSource
-        collectionView.prefetchDataSource = dataSource
+        
+        APIClient.getDataCount { [weak self] count in
+            self?.personagesCount = count
+        }
     }
 }
 
 extension PersonageCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 480)
+        return CGSize(width: collectionView.frame.width, height: 480)
     }
 }

@@ -1,17 +1,20 @@
 //
-//  PersonageDataSource.swift
+//  PersonagesCollectionDataSource.swift
 //  StudyProject12addition
 //
-//  Created by Nikolai Faustov on 14.01.2021.
+//  Created by Nikolai Faustov on 24.01.2021.
 //
 
 import UIKit
 
-class PersonageDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+class PersonagesCollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     
-    private let fetcher = PersonageFetcher()
+    private let fetcher = PersonagesPageFetcher()
     
     private let personagesCount: Int
+    
+    private var pageNumber = 1
+    private let personagesPerPage = 20
     
     init(dataCount: Int) {
         personagesCount = dataCount
@@ -23,18 +26,17 @@ class PersonageDataSource: NSObject, UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonageCell.reuseIdentifier, for: indexPath) as! PersonageCell
-
-        let id = indexPath.row + 1
         
-        // Проверяем, возможно fetcher уже получил данные для этого id
-        if let fetchedData = fetcher.fetchedData(for: id) {
-            // Данные загружены и закэшированы, используем их
-            cell.configure(from: fetchedData)
-            print("Loaded personage id\(fetchedData.id) from cache")
+        let id = indexPath.row + 1
+
+        if let fetchedData = fetcher.fetchedData(for: pageNumber) {
+            for personage in fetchedData where personage.id == id {
+                cell.configure(from: personage)
+                print("Loaded personage id\(personage.id) from cache")
+            }
         } else {
-            // Данных нет. Загружаем их
-            fetcher.fetchPersonage(id) { personage in
-                guard let personage = personage else { return }
+            fetcher.fetchPersonagesPage(pageNumber) { personages in
+                guard let personage = personages.first(where: { $0.id == id }) else { return }
                 
                 DispatchQueue.main.async {
                     cell.configure(from: personage)
@@ -47,16 +49,15 @@ class PersonageDataSource: NSObject, UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            fetcher.fetchPersonage(indexPath.row + 1)
+        for indexPath in indexPaths where indexPath.row % personagesPerPage == 0 {
+            pageNumber = (indexPath.row + 1) / personagesPerPage + 1
+            fetcher.fetchPersonagesPage(pageNumber)
         }
-        print("Prefetching \(indexPaths.count) personages")
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths {
-            fetcher.cancelFetch(indexPath.row + 1)
-            print("Cancel prefetching personages")
+        for indexPath in indexPaths where indexPath.row % personagesPerPage == 0 {
+            fetcher.cancelFetch(pageNumber: pageNumber)
         }
     }
 }

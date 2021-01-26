@@ -9,7 +9,11 @@ import Foundation
 
 class PersonageFetcher {
     // Очередь операций, которая состоит из fetchQueue и вызовов completionHandlers
-    private let serialAccessQueue = OperationQueue()
+    private let serialAccessQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 1
+        return queue
+    }()
     // Очередь операций, которая состоит из PersonageFetchOperation
     private let fetchQueue = OperationQueue()
     
@@ -18,10 +22,6 @@ class PersonageFetcher {
     private var completionHandlers = [Int: CompletionHandler]()
     // В кэше хранятся полученные данные
     private var cache = NSCache<NSNumber, Personage>()
-    
-    init() {
-        serialAccessQueue.maxConcurrentOperationCount = 1
-    }
     
     func fetchedData(for id: Int) -> Personage? {
         return cache.object(forKey: id as NSNumber)

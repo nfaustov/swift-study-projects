@@ -10,8 +10,6 @@ import UIKit
 class PersonageCell: UICollectionViewCell {
     static let reuseIdentifier = "PersonageCell"
     
-    var representedId: Int?
-    
     @IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,9 +19,7 @@ class PersonageCell: UICollectionViewCell {
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     
-    func configure(from personage: Personage?) {
-        guard let personage = personage else { return }
-        
+    func configure(from personage: Personage) {
         avatarImageView.load(url: personage.image)
 
         nameLabel.text = "Name: \(personage.name)"
