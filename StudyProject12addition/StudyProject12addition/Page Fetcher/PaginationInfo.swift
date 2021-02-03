@@ -1,5 +1,5 @@
 //
-//  APIClient.swift
+//  PaginationInfo.swift
 //  StudyProject12addition
 //
 //  Created by Nikolai Faustov on 25.01.2021.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class APIClient {
-    static func getDataCount(completion: @escaping (Int) -> Void) {
+class PaginationInfo {
+    static func getPersonagesCount(completion: @escaping (Int) -> Void) {
         let url = URL(string: "https://rickandmortyapi.com/api/character")!
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data,_,_ in

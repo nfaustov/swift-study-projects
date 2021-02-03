@@ -14,7 +14,6 @@ class PersonagesCollectionDataSource: NSObject, UICollectionViewDataSource, UICo
     private let personagesCount: Int
     
     private var pageNumber = 1
-    private let personagesPerPage = 20
     
     init(dataCount: Int) {
         personagesCount = dataCount
@@ -49,14 +48,16 @@ class PersonagesCollectionDataSource: NSObject, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths where indexPath.row % personagesPerPage == 0 {
-            pageNumber = (indexPath.row + 1) / personagesPerPage + 1
+        let fetchedData = fetcher.fetchedData(for: pageNumber)
+        for indexPath in indexPaths where indexPath.row == fetchedData?.last?.id {
+            pageNumber += 1
             fetcher.fetchPersonagesPage(pageNumber)
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-        for indexPath in indexPaths where indexPath.row % personagesPerPage == 0 {
+        let fetchedData = fetcher.fetchedData(for: pageNumber)
+        for indexPath in indexPaths where indexPath.row == fetchedData?.last?.id {
             fetcher.cancelFetch(pageNumber: pageNumber)
         }
     }

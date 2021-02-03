@@ -24,7 +24,7 @@ class PersonageCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        APIClient.getDataCount { [weak self] count in
+        PaginationInfo.getPersonagesCount { [weak self] count in
             self?.personagesCount = count
         }
     }
