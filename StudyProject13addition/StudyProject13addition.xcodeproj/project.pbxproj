@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B02234225E289AE00BFEE91 /* SquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B02234125E289AE00BFEE91 /* SquareView.swift */; };
 		8B5A9FF625CD710C008B5F5B /* TopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5A9FF525CD710C008B5F5B /* TopicView.swift */; };
 		8BDFD8A825CABF50004EAE67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFD8A725CABF50004EAE67 /* AppDelegate.swift */; };
 		8BDFD8AA25CABF50004EAE67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDFD8A925CABF50004EAE67 /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B02234125E289AE00BFEE91 /* SquareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareView.swift; sourceTree = "<group>"; };
 		8B5A9FF525CD710C008B5F5B /* TopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicView.swift; sourceTree = "<group>"; };
 		8BDFD8A425CABF50004EAE67 /* StudyProject13addition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyProject13addition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDFD8A725CABF50004EAE67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				8BDFD8AB25CABF50004EAE67 /* ViewController.swift */,
 				8B5A9FF525CD710C008B5F5B /* TopicView.swift */,
+				8B02234125E289AE00BFEE91 /* SquareView.swift */,
 				8BDFD8AD25CABF50004EAE67 /* Main.storyboard */,
 				8BDFD8BD25CABFD8004EAE67 /* Supporting Files */,
 				8BDFD8B525CABF50004EAE67 /* Info.plist */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B5A9FF625CD710C008B5F5B /* TopicView.swift in Sources */,
+				8B02234225E289AE00BFEE91 /* SquareView.swift in Sources */,
 				8BDFD8AC25CABF50004EAE67 /* ViewController.swift in Sources */,
 				8BDFD8A825CABF50004EAE67 /* AppDelegate.swift in Sources */,
 				8BDFD8AA25CABF50004EAE67 /* SceneDelegate.swift in Sources */,

@@ -41,6 +41,10 @@ final class ViewController: UIViewController {
     
     private lazy var greenViewAnimator = UIViewPropertyAnimator(duration: 0.8, curve: .easeInOut)
     private lazy var topicAnimator = UIViewPropertyAnimator(duration: 0.3, curve: .easeIn)
+    
+    var topicPan: UIPanGestureRecognizer? {
+        UIPanGestureRecognizer(target: self, action: #selector(handleTopicPan(_:)))
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +52,19 @@ final class ViewController: UIViewController {
         greenView = UIView(frame: stateFrame)
         greenView.backgroundColor = .systemGreen
         
+        let sideLength = greenView.frame.width - 200
+        let square = SquareView(
+            frame: CGRect(
+                x: 100,
+                y: 100,
+                width: sideLength,
+                height: sideLength
+            )
+        )
+        
         addTopics()
         view.addSubview(greenView)
+        greenView.addSubview(square)
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         greenView.addGestureRecognizer(pan)
@@ -118,7 +133,8 @@ final class ViewController: UIViewController {
                 topicAnimator.addCompletion { _ in
                     topicView.removeFromSuperview()
                     self.topicViews.insert(newTopic, at: index)
-                    self.topicViews.remove(at: index)
+                    self.topicViews.remove(at: index + 1)
+                    newTopic.addGestureRecognizer(self.topicPan!)
                     UIViewPropertyAnimator.runningPropertyAnimator(withDuration: min(0.8 / Double(velocityFactor), 1), delay: 0) {
                         newTopic.frame.origin.x = 40
                     }
@@ -139,8 +155,7 @@ final class ViewController: UIViewController {
             view.addSubview(topicView)
             topicView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             topicViews.append(topicView)
-            let topicPan = UIPanGestureRecognizer(target: self, action: #selector(handleTopicPan(_:)))
-            topicView.addGestureRecognizer(topicPan)
+            topicView.addGestureRecognizer(topicPan!)
         }
     }
 
