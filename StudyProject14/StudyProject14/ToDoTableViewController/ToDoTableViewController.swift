@@ -40,8 +40,11 @@ final class ToDoTableViewController<T>: UITableViewController where T: DataBaseM
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoItemTableViewCell.reuseIdentifier, for: indexPath) as! ToDoItemTableViewCell
-        cell.configure(items[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: ToDoItemTableViewCell.reuseIdentifier, for: indexPath)
+        let item = items[indexPath.row]
+        
+        cell.textLabel?.text = item.title
+        cell.accessoryType = item.isDone ? .checkmark : .none
         
         return cell
     }
@@ -88,5 +91,17 @@ final class ToDoTableViewController<T>: UITableViewController where T: DataBaseM
         }
         
         return action
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var item = items[indexPath.row]
+        
+        dataBaseManager.save {
+            item.isDone.toggle()
+        }
+        
+        let selected = tableView.cellForRow(at: indexPath)
+        selected?.accessoryType = item.isDone ? .checkmark : .none
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -19,11 +19,18 @@ final class RealmManager: DataBaseManager {
     func add(objectWithTitle title: String) -> ToDoTask {
         let toDoTask = ToDoTask()
         toDoTask.title = title
-        try! realm.write {
-            realm.add(toDoTask)
+        toDoTask.isDone = false
+        save {
+            self.realm.add(toDoTask)
         }
         
         return toDoTask
+    }
+    
+    func save(changes: (() -> Void)?) {
+        try! realm.write {
+            changes?()
+        }
     }
     
     func delete(object: ToDoTask) {

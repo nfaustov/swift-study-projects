@@ -12,10 +12,12 @@ protocol DataBaseManager {
 
     func load() -> [Model]
     func add(objectWithTitle: String) -> Model
+    func save(changes: (() -> Void)?)
     func delete(object: Model)
 }
 
 protocol ModelType {
     var title: String { get set }
+    var isDone: Bool { get set }
 }
 

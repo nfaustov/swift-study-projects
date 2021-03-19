@@ -10,6 +10,7 @@ import RealmSwift
 
 class ToDoTask: Object {
     @objc dynamic var title = ""
+    @objc dynamic var isDone = false
 }
 
 extension ToDoTask: ModelType {}

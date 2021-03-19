@@ -40,7 +40,7 @@ final class WeatherViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let forecast = realm.objects(WeeklyForecastResponse.self).first {
+        if let forecast = realm.objects(WeatherForecast.self).first {
             configure(forecast: forecast)
             print("Configured from Realm")
         }
@@ -50,54 +50,77 @@ final class WeatherViewController: UIViewController {
             
             switch result {
             case .failure(let error): print(error)
-            case .success(let forecast):
+            case .success(let response):
                 DispatchQueue.main.async {
+                    guard let forecast = self.getForecast(from: response) else { return }
                     self.configure(forecast: forecast)
                     print("Configured from URLSession")
-                    
-                    try! self.realm.write {
-                        self.realm.add(forecast)
-                    }
                 }
             }
         }
     }
     
-    private var dailyForecast = [DailyForecast]() {
+    private var dailyForecast = [Daily]() {
         didSet {
             self.forecastTableView.reloadData()
         }
     }
     
-    private func configure(forecast: WeeklyForecastResponse) {
-        dailyForecast = Array(forecast.daily)
+    private func transform(_ response: DailyForecast) -> Daily {
+        let daily = Daily()
+        daily.date = response.dt
+        daily.dayTemperature = response.temp.day
+        daily.nightTemperature = response.temp.night
+        guard let weather = response.weather.first else { return daily }
+        daily.imageName = weather.icon
         
-        guard let current = forecast.current,
-              let weather = current.weather.first,
-              let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
+        return daily
+    }
+    
+    private func getForecast(from response: WeeklyForecastResponse) -> WeatherForecast? {
+        guard let weather = response.current.weather.first,
+              let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return nil }
+        
+        let forecast = WeatherForecast()
+        
+        forecast.temperature = response.current.temp
+        forecast.feelsLike = response.current.feelsLike
+        forecast.pressure = response.current.pressure
+        forecast.humidity = response.current.humidity
+        forecast.windSpeed = response.current.windSpeed
+        forecast.sunrise = response.current.sunrise
+        forecast.sunset = response.current.sunset
+        
+        let daily = response.daily.map(transform(_:))
+        
+        try! realm.write {
+            realm.add(forecast)
+            forecast.dailyForecast.removeAll()
+            forecast.dailyForecast.append(objectsIn: daily)
+        }
 
-        temperatureLabel.text = "\(Int(current.temp))°C"
-        feelsLikeLabel.text = "\(Int(current.feelsLike))°C"
-        windLabel.text = "\(current.windSpeed)м/с"
-        humidityLabel.text = "\(current.humidity)%"
-        pressureLabel.text = "\(Int(Double(current.pressure) * 0.75))мм рт. ст."
-        sunriseLabel.text = dateFormatter.string(from: current.sunrise)
-        sunsetLabel.text = dateFormatter.string(from: current.sunset)
-
-        if let image = realm.objects(ImageStorage.self).filter("weather == %@", weather).first {
-            weatherImageView.image = UIImage(data: image.data)
-        } else {
-            weatherImageView.load(url: iconURL) { [weak self] image in
-                guard let self = self else { return }
-
-                let imageModel = ImageStorage()
-                imageModel.data = image.pngData() ?? Data()
-                imageModel.weather = weather
-
-                try! self.realm.write {
-                    self.realm.add(imageModel)
-                }
+        weatherImageView.load(url: iconURL) { [weak self] image in
+            try! self?.realm.write {
+                forecast.imageData = image.pngData() ?? Data()
             }
+        }
+        
+        return forecast
+    }
+    
+    private func configure(forecast: WeatherForecast) {
+        dailyForecast = Array(forecast.dailyForecast)
+        
+        temperatureLabel.text = "\(Int(forecast.temperature))°C"
+        feelsLikeLabel.text = "\(forecast.feelsLike)°C"
+        windLabel.text = "\(Int(forecast.windSpeed))м/с"
+        humidityLabel.text = "\(forecast.humidity)%"
+        pressureLabel.text = "\(Int(Double(forecast.pressure) * 0.75))мм рт. ст."
+        sunriseLabel.text = dateFormatter.string(from: forecast.sunrise)
+        sunsetLabel.text = dateFormatter.string(from: forecast.sunset)
+
+        if weatherImageView.image == nil {
+            weatherImageView.image = UIImage(data: forecast.imageData)
         }
     }
 }

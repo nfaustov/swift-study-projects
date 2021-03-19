@@ -6,46 +6,34 @@
 //
 
 import Foundation
-import RealmSwift
 
-@objcMembers
-class WeeklyForecastResponse: Object, Decodable {
-    dynamic var current: CurrentWeather?
-    dynamic var daily = List<DailyForecast>()
+struct WeeklyForecastResponse: Decodable {
+    var current: CurrentWeather
+    var daily: [DailyForecast]
 }
 
-@objcMembers
-class CurrentWeather: Object, Decodable {
-    dynamic var weather = List<Weather>()
-    dynamic var sunrise = Date()
-    dynamic var sunset = Date()
-    dynamic var temp: Double = 0.0
-    dynamic var feelsLike: Double = 0.0
-    dynamic var pressure = 0
-    dynamic var humidity = 0
-    dynamic var windSpeed: Double = 0.0
+struct CurrentWeather: Decodable {
+    var weather: [Weather]
+    var sunrise: Date
+    var sunset: Date
+    var temp: Double
+    var feelsLike: Double
+    var pressure: Int
+    var humidity: Int
+    var windSpeed: Double
 }
 
-@objcMembers
-class DailyForecast: Object, Decodable {
-    dynamic var dt = Date()
-    dynamic var temp: Temperature?
-    dynamic var weather = List<Weather>()
+struct DailyForecast: Decodable {
+    var dt: Date
+    var temp: Temperature
+    var weather: [Weather]
 }
 
-@objcMembers
-class Temperature: Object, Decodable {
-    dynamic var day: Double = 0.0
-    dynamic var night: Double = 0.0
+struct Temperature: Decodable {
+    var day: Double
+    var night: Double
 }
 
-@objcMembers
-class Weather: Object, Decodable {
-    dynamic var icon = ""
-}
-
-@objcMembers
-class ImageStorage: Object {
-    dynamic var data = Data()
-    dynamic var weather: Weather?
+struct Weather: Decodable {
+    var icon: String
 }

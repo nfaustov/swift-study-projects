@@ -21,29 +21,26 @@ final class ForecastTableViewCell: UITableViewCell {
     @IBOutlet weak var dayTemperatureLabel: UILabel!
     @IBOutlet weak var nightTemperatureLabel: UILabel!
     
-    func configure(_ forecast: DailyForecast) {
-        guard let temperature = forecast.temp,
-              let weather = forecast.weather.first,
-              let iconURL = URL(string: "https://openweathermap.org/img/wn/\(weather.icon)@2x.png") else { return }
-        
-        weekDayLabel.text = dateFormatter.string(from: forecast.dt)
-        dayTemperatureLabel.text = "\(Int(temperature.day))°C"
-        nightTemperatureLabel.text = "\(Int(temperature.night))°C"
+    func configure(_ forecast: Daily) {
+        weekDayLabel.text = dateFormatter.string(from: forecast.date)
+        dayTemperatureLabel.text = "\(Int(forecast.dayTemperature))°C"
+        nightTemperatureLabel.text = "\(Int(forecast.nightTemperature))°C"
         
         let realm = try! Realm()
         
-        if let image = realm.objects(ImageStorage.self).filter("weather == %@", weather).first {
-            weatherImageView.image = UIImage(data: image.data)
-        } else {
-            weatherImageView.load(url: iconURL) { image in
-                let imageModel = ImageStorage()
-                imageModel.data = image.pngData() ?? Data()
-                imageModel.weather = weather
-
+        weatherImageView.image = UIImage(data: forecast.imageData)
+        
+        if weatherImageView.image == nil {
+            guard let url = URL(string: "https://openweathermap.org/img/wn/\(forecast.imageName)@2x.png") else { return }
+            weatherImageView.load(url: url) { image in
                 try! realm.write {
-                    realm.add(imageModel)
+                    forecast.imageData = image.pngData() ?? Data()
                 }
+                print("Cell image loaded from URL")
             }
+        } else {
+           print("Cell image loaded from Realm")
         }
+        
     }
 }

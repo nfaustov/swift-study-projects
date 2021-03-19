@@ -21,6 +21,7 @@ final class CoreDataManager: DataBaseManager {
     func add(objectWithTitle title: String) -> ToDoItem {
         let toDoItem = ToDoItem(context: context)
         toDoItem.title = title
+        toDoItem.isDone = false
         save()
         
         return toDoItem
@@ -31,7 +32,9 @@ final class CoreDataManager: DataBaseManager {
         save()
     }
     
-    private func save() {
+    func save(changes: (() -> Void)? = nil) {
+        changes?()
+        
         do {
             try context.save()
         } catch let error {
