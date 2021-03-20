@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B14AABD25FCABAE008C5F23 /* RealmStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14AABC25FCABAE008C5F23 /* RealmStoreManager.swift */; };
+		8B14AAC325FCB755008C5F23 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B14AAC225FCB755008C5F23 /* DataBaseManager.swift */; };
+		8B21E6F02600B29700F0D652 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B21E6EF2600B29700F0D652 /* WeatherService.swift */; };
+		8B38ED9C25FA2D6600E71873 /* CoreDataStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B38ED9B25FA2D6600E71873 /* CoreDataStoreManager.swift */; };
+		8B6AF9AC260477EE004C73B2 /* ToDoItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AF9AB260477EE004C73B2 /* ToDoItemTableViewCell.swift */; };
+		8B6AF9AF26048707004C73B2 /* WeatherForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6AF9AE26048707004C73B2 /* WeatherForecast.swift */; };
+		8B92E39925F7D5D100A1BD01 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 8B92E39825F7D5D100A1BD01 /* Realm */; };
+		8B92E39B25F7D5D100A1BD01 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B92E39A25F7D5D100A1BD01 /* RealmSwift */; };
+		8BA35E842600A5340039429A /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA35E832600A5340039429A /* WeatherViewController.swift */; };
+		8BA35E8A2600AE3B0039429A /* WeatherForecastResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA35E892600AE3B0039429A /* WeatherForecastResponse.swift */; };
+		8BA35E8D2600AE9A0039429A /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA35E8C2600AE9A0039429A /* ForecastTableViewCell.swift */; };
+		8BA35E902600AF010039429A /* ExtensionImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA35E8F2600AF010039429A /* ExtensionImageView.swift */; };
+		8BD4594925FF42FB0050649D /* ToDoItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4594725FF42FB0050649D /* ToDoItem+CoreDataClass.swift */; };
+		8BD4594A25FF42FB0050649D /* ToDoItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4594825FF42FB0050649D /* ToDoItem+CoreDataProperties.swift */; };
+		8BD4594F25FF449D0050649D /* ToDoTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4594E25FF449D0050649D /* ToDoTask.swift */; };
+		8BF87B9625F648FB0050ABB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87B9525F648FB0050ABB3 /* AppDelegate.swift */; };
+		8BF87B9825F648FB0050ABB3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87B9725F648FB0050ABB3 /* SceneDelegate.swift */; };
+		8BF87B9D25F648FB0050ABB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF87B9B25F648FB0050ABB3 /* Main.storyboard */; };
+		8BF87BA025F648FB0050ABB3 /* StudyProject14.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87B9E25F648FB0050ABB3 /* StudyProject14.xcdatamodeld */; };
+		8BF87BA225F648FC0050ABB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BF87BA125F648FC0050ABB3 /* Assets.xcassets */; };
+		8BF87BA525F648FC0050ABB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF87BA325F648FC0050ABB3 /* LaunchScreen.storyboard */; };
+		8BF87BB325F64E6A0050ABB3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87BB225F64E6A0050ABB3 /* TabBarController.swift */; };
+		8BF87BB625F64FBC0050ABB3 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87BB525F64FBC0050ABB3 /* NameViewController.swift */; };
+		8BF87BB925F64FED0050ABB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87BB825F64FED0050ABB3 /* User.swift */; };
+		8BF87BBC25F650420050ABB3 /* ToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF87BBB25F650420050ABB3 /* ToDoTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8B14AABC25FCABAE008C5F23 /* RealmStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStoreManager.swift; sourceTree = "<group>"; };
+		8B14AAC225FCB755008C5F23 /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		8B21E6EF2600B29700F0D652 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		8B38ED9B25FA2D6600E71873 /* CoreDataStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreManager.swift; sourceTree = "<group>"; };
+		8B6AF9AB260477EE004C73B2 /* ToDoItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItemTableViewCell.swift; sourceTree = "<group>"; };
+		8B6AF9AE26048707004C73B2 /* WeatherForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecast.swift; sourceTree = "<group>"; };
+		8BA35E832600A5340039429A /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		8BA35E892600AE3B0039429A /* WeatherForecastResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForecastResponse.swift; sourceTree = "<group>"; };
+		8BA35E8C2600AE9A0039429A /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
+		8BA35E8F2600AF010039429A /* ExtensionImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionImageView.swift; sourceTree = "<group>"; };
+		8BD4594725FF42FB0050649D /* ToDoItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ToDoItem+CoreDataClass.swift"; path = "StudyProject14/StoreManager/Models/ToDoItem+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		8BD4594825FF42FB0050649D /* ToDoItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ToDoItem+CoreDataProperties.swift"; path = "StudyProject14/StoreManager/Models/ToDoItem+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		8BD4594E25FF449D0050649D /* ToDoTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTask.swift; sourceTree = "<group>"; };
+		8BF87B9225F648FB0050ABB3 /* StudyProject14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyProject14.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF87B9525F648FB0050ABB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8BF87B9725F648FB0050ABB3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8BF87B9C25F648FB0050ABB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8BF87B9F25F648FB0050ABB3 /* StudyProject14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StudyProject14.xcdatamodel; sourceTree = "<group>"; };
+		8BF87BA125F648FC0050ABB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8BF87BA425F648FC0050ABB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8BF87BA625F648FC0050ABB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BF87BB225F64E6A0050ABB3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		8BF87BB525F64FBC0050ABB3 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
+		8BF87BB825F64FED0050ABB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8BF87BBB25F650420050ABB3 /* ToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8BF87B8F25F648FB0050ABB3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B92E39B25F7D5D100A1BD01 /* RealmSwift in Frameworks */,
+				8B92E39925F7D5D100A1BD01 /* Realm in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B14AAC125FCB715008C5F23 /* StoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4594D25FF44690050649D /* Models */,
+				8B14AAC225FCB755008C5F23 /* DataBaseManager.swift */,
+				8B38ED9B25FA2D6600E71873 /* CoreDataStoreManager.swift */,
+				8B14AABC25FCABAE008C5F23 /* RealmStoreManager.swift */,
+			);
+			path = StoreManager;
+			sourceTree = "<group>";
+		};
+		8BA35E872600AD490039429A /* WeatherViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BA35E832600A5340039429A /* WeatherViewController.swift */,
+				8BA35E8C2600AE9A0039429A /* ForecastTableViewCell.swift */,
+				8BA35E892600AE3B0039429A /* WeatherForecastResponse.swift */,
+				8B6AF9AE26048707004C73B2 /* WeatherForecast.swift */,
+				8B21E6EF2600B29700F0D652 /* WeatherService.swift */,
+			);
+			path = WeatherViewController;
+			sourceTree = "<group>";
+		};
+		8BD4594D25FF44690050649D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8BD4594725FF42FB0050649D /* ToDoItem+CoreDataClass.swift */,
+				8BD4594825FF42FB0050649D /* ToDoItem+CoreDataProperties.swift */,
+				8BD4594E25FF449D0050649D /* ToDoTask.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8BF87B8925F648FB0050ABB3 = {
+			isa = PBXGroup;
+			children = (
+				8BF87B9425F648FB0050ABB3 /* StudyProject14 */,
+				8BF87B9325F648FB0050ABB3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8BF87B9325F648FB0050ABB3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8BF87B9225F648FB0050ABB3 /* StudyProject14.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8BF87B9425F648FB0050ABB3 /* StudyProject14 */ = {
+			isa = PBXGroup;
+			children = (
+				8BF87BB225F64E6A0050ABB3 /* TabBarController.swift */,
+				8BF87BBE25F6599D0050ABB3 /* NameViewController */,
+				8BF87BBF25F659AD0050ABB3 /* ToDoTableViewController */,
+				8BA35E872600AD490039429A /* WeatherViewController */,
+				8B14AAC125FCB715008C5F23 /* StoreManager */,
+				8BA35E8F2600AF010039429A /* ExtensionImageView.swift */,
+				8BF87B9B25F648FB0050ABB3 /* Main.storyboard */,
+				8BF87BAF25F649610050ABB3 /* Supporting Files */,
+				8BF87BA625F648FC0050ABB3 /* Info.plist */,
+				8BF87B9E25F648FB0050ABB3 /* StudyProject14.xcdatamodeld */,
+			);
+			path = StudyProject14;
+			sourceTree = "<group>";
+		};
+		8BF87BAF25F649610050ABB3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BF87B9525F648FB0050ABB3 /* AppDelegate.swift */,
+				8BF87B9725F648FB0050ABB3 /* SceneDelegate.swift */,
+				8BF87BA125F648FC0050ABB3 /* Assets.xcassets */,
+				8BF87BA325F648FC0050ABB3 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8BF87BBE25F6599D0050ABB3 /* NameViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BF87BB525F64FBC0050ABB3 /* NameViewController.swift */,
+				8BF87BB825F64FED0050ABB3 /* User.swift */,
+			);
+			path = NameViewController;
+			sourceTree = "<group>";
+		};
+		8BF87BBF25F659AD0050ABB3 /* ToDoTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8BF87BBB25F650420050ABB3 /* ToDoTableViewController.swift */,
+				8B6AF9AB260477EE004C73B2 /* ToDoItemTableViewCell.swift */,
+			);
+			path = ToDoTableViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8BF87B9125F648FB0050ABB3 /* StudyProject14 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BF87BA925F648FC0050ABB3 /* Build configuration list for PBXNativeTarget "StudyProject14" */;
+			buildPhases = (
+				8BF87B8E25F648FB0050ABB3 /* Sources */,
+				8BF87B8F25F648FB0050ABB3 /* Frameworks */,
+				8BF87B9025F648FB0050ABB3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StudyProject14;
+			packageProductDependencies = (
+				8B92E39825F7D5D100A1BD01 /* Realm */,
+				8B92E39A25F7D5D100A1BD01 /* RealmSwift */,
+			);
+			productName = StudyProject14;
+			productReference = 8BF87B9225F648FB0050ABB3 /* StudyProject14.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8BF87B8A25F648FB0050ABB3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					8BF87B9125F648FB0050ABB3 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 8BF87B8D25F648FB0050ABB3 /* Build configuration list for PBXProject "StudyProject14" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8BF87B8925F648FB0050ABB3;
+			packageReferences = (
+				8B92E39725F7D5D100A1BD01 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
+			productRefGroup = 8BF87B9325F648FB0050ABB3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8BF87B9125F648FB0050ABB3 /* StudyProject14 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8BF87B9025F648FB0050ABB3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF87BA525F648FC0050ABB3 /* LaunchScreen.storyboard in Resources */,
+				8BF87BA225F648FC0050ABB3 /* Assets.xcassets in Resources */,
+				8BF87B9D25F648FB0050ABB3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8BF87B8E25F648FB0050ABB3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B21E6F02600B29700F0D652 /* WeatherService.swift in Sources */,
+				8BF87BA025F648FB0050ABB3 /* StudyProject14.xcdatamodeld in Sources */,
+				8BA35E842600A5340039429A /* WeatherViewController.swift in Sources */,
+				8B14AABD25FCABAE008C5F23 /* RealmStoreManager.swift in Sources */,
+				8BF87BB325F64E6A0050ABB3 /* TabBarController.swift in Sources */,
+				8B14AAC325FCB755008C5F23 /* DataBaseManager.swift in Sources */,
+				8BD4594925FF42FB0050649D /* ToDoItem+CoreDataClass.swift in Sources */,
+				8BA35E902600AF010039429A /* ExtensionImageView.swift in Sources */,
+				8BF87BBC25F650420050ABB3 /* ToDoTableViewController.swift in Sources */,
+				8BF87BB925F64FED0050ABB3 /* User.swift in Sources */,
+				8BF87B9625F648FB0050ABB3 /* AppDelegate.swift in Sources */,
+				8B6AF9AF26048707004C73B2 /* WeatherForecast.swift in Sources */,
+				8BD4594F25FF449D0050649D /* ToDoTask.swift in Sources */,
+				8B6AF9AC260477EE004C73B2 /* ToDoItemTableViewCell.swift in Sources */,
+				8BA35E8D2600AE9A0039429A /* ForecastTableViewCell.swift in Sources */,
+				8BF87B9825F648FB0050ABB3 /* SceneDelegate.swift in Sources */,
+				8BD4594A25FF42FB0050649D /* ToDoItem+CoreDataProperties.swift in Sources */,
+				8BF87BB625F64FBC0050ABB3 /* NameViewController.swift in Sources */,
+				8BA35E8A2600AE3B0039429A /* WeatherForecastResponse.swift in Sources */,
+				8B38ED9C25FA2D6600E71873 /* CoreDataStoreManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8BF87B9B25F648FB0050ABB3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BF87B9C25F648FB0050ABB3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8BF87BA325F648FC0050ABB3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BF87BA425F648FC0050ABB3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8BF87BA725F648FC0050ABB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8BF87BA825F648FC0050ABB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8BF87BAA25F648FC0050ABB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WQ6FU7ZZ8T;
+				INFOPLIST_FILE = StudyProject14/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = qq.StudyProject14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8BF87BAB25F648FC0050ABB3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WQ6FU7ZZ8T;
+				INFOPLIST_FILE = StudyProject14/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = qq.StudyProject14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8BF87B8D25F648FB0050ABB3 /* Build configuration list for PBXProject "StudyProject14" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BF87BA725F648FC0050ABB3 /* Debug */,
+				8BF87BA825F648FC0050ABB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8BF87BA925F648FC0050ABB3 /* Build configuration list for PBXNativeTarget "StudyProject14" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BF87BAA25F648FC0050ABB3 /* Debug */,
+				8BF87BAB25F648FC0050ABB3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B92E39725F7D5D100A1BD01 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B92E39825F7D5D100A1BD01 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B92E39725F7D5D100A1BD01 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		8B92E39A25F7D5D100A1BD01 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B92E39725F7D5D100A1BD01 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		8BF87B9E25F648FB0050ABB3 /* StudyProject14.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8BF87B9F25F648FB0050ABB3 /* StudyProject14.xcdatamodel */,
+			);
+			currentVersion = 8BF87B9F25F648FB0050ABB3 /* StudyProject14.xcdatamodel */;
+			path = StudyProject14.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8BF87B8A25F648FB0050ABB3 /* Project object */;
+}
