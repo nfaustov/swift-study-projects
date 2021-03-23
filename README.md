@@ -3,51 +3,51 @@
 List of my educational projects from iOS development trainig course.
 
 ## Project 14
-Data storage. Realm, CoreData, UserDefaults.
+**_Data storage. Realm, CoreData, UserDefaults._**
 
 [StudyProject14/StudyProject14/](StudyProject14/StudyProject14/)
 
 ## Project 13
-Animations.
+**_Animations._**
 
 [StudyProject13/StudyProject13/](StudyProject13/StudyProject13/)
 
 [StudyProject13addition/StudyProject13addition/](StudyProject13addition/StudyProject13addition/)
 
 ## Project 12
-Networking. JSON parsing. Standard tools and third-party libraries.
+**_Networking. JSON parsing. Standard tools and third-party libraries._**
 
 [StudyProject12/StudyProject12/](StudyProject12/StudyProject12/)
 
 [StudyProject12addition/StudyProject12addition/](StudyProject12addition/StudyProject12addition/)
 
 ## Project 11
-Creating custom UI components.
+**_Creating custom UI components._**
 
 [StudyProject11/StudyProject11/](StudyProject11/StudyProject11/)
 
 ## Project 10
-TableView & CollectionView.
+**_TableView & CollectionView._**
 
 [StudyProject10/StudyProject10/](StudyProject10/StudyProject10/)
 
 ## Project 9
-Autolayout/Constraints/StackViews.
+**_Autolayout/Constraints/StackViews._**
 
 [StudyProject9/StudyProject9/](StudyProject9/StudyProject9/)
 
 ## Project 8
-Working with standard library UI components.
+**_Working with standard library UI components._**
 
 [StudyProject8/StudyProject8/](StudyProject8/StudyProject8/)
 
 ## Project 7
-Screen segues and interactions.
+**_Screen segues and interactions._**
 
 [StudyProject7/StudyProject7/](StudyProject7/StudyProject7/)
 
 ## Project 6
-Controller & Storyboard.
+**_Controller & Storyboard._**
 
 [Homework_6/StudyProject6/StudyProject6/](Homework_6/StudyProject6/StudyProject6/)
 
@@ -56,24 +56,20 @@ Controller & Storyboard.
 [Homework_6/StudyProject6.3/StudyProject6.3/](Homework_6/StudyProject6.3/StudyProject6.3/)
 
 ## Project 5
-OOP basics.
+**_OOP basics._**
 
 [Homework_5.playground/Contents.swift](Homework_5.playground/Contents.swift)
 
 ## Project 4
-Classes/Structures/Enums.
+**_Classes/Structures/Enums._**
 
 [Homework_4_reworked.playground/Contents.swift](Homework_4_reworked.playground/Contents.swift)
-
-
-
-> Check [pull requests](https://github.com/nfaustov/swift-study-projects/pulls?q=is%3Apr+is%3Aclosed) for more details
-
-
 
 ### My very first app
 It simply calculates the price of the service in beauty saloon based on the price list and the amount of work
 
-[Bad Constant/Bad Constant/](Bad\ Constant/Bad\ Constant/)
+[Bad Constant/Bad Constant/](Bad\Constant/Bad\Constant/)
 
 I developed this app for my wife one month after the first touch to Xcode 😀
+
+> Check [pull requests](https://github.com/nfaustov/swift-study-projects/pulls?q=is%3Apr+is%3Aclosed) for more details
