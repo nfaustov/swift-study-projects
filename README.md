@@ -1,6 +1,11 @@
 # swift-study-projects
 
-List of my educational projects from iOS development trainig course.
+List of my educational projects from iOS development training course.
+
+## Project 15
+_Functional programming._
+
+[StudyProject15/StudyProject15.playground/](StudyProject15/StudyProject15.playground/)
 
 ## Project 14
 _Data storage. Realm, CoreData, UserDefaults._
